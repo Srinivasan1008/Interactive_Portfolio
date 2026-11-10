@@ -64,13 +64,6 @@
         linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
     }
-    /* Smooth Instagram embed wrapper styling */
-    .instagram-media {
-      margin: 0 auto !important;
-      border-radius: 12px !important;
-      border: 1px solid #1f2330 !important;
-      background: #0d0e14 !important;
-    }
   </style>
 </head>
 <body class="min-h-screen grid-bg font-sans antialiased selection:bg-emerald-500 selection:text-black">
@@ -98,19 +91,18 @@
       <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
         
         <!-- Profile Picture Box -->
-        <div class="relative group cursor-pointer" onclick="document.getElementById('avatar-input').click()" title="Tap to change photo">
+        <div class="relative group cursor-pointer" onclick="document.getElementById('avatar-input').click()" title="Tap to upload image directly">
           <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-surface-card border border-surface-border overflow-hidden flex items-center justify-center shadow-lg transition-transform group-hover:scale-[1.02]">
             <img 
               id="profile-img" 
-              src="./16251.jpg" 
+              src="16251.jpg" 
               alt="Srinivasan Venkatesan" 
               class="w-full h-full object-cover object-top" 
-              onload="onImageLoadSuccess()"
-              onerror="onImageLoadError(this)" 
+              onerror="handleAvatarFallback(this)" 
             />
             <div id="monogram-fallback" class="hidden font-mono font-bold text-2xl text-slate-400">SV</div>
           </div>
-          <span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-[#08090d]" title="Open for collaboration"></span>
+          <span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-[#08090d]" title="Active"></span>
           <input type="file" id="avatar-input" accept="image/*" class="hidden" onchange="handleManualAvatarUpload(event)" />
         </div>
 
@@ -122,7 +114,7 @@
           </div>
           <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">Srinivasan Venkatesan</h1>
           <p class="text-sm text-slate-400 max-w-xl leading-relaxed">
-            Senior Full Stack Engineer with 5+ years building enterprise UI/UX architectures, scalable APIs, and autonomous AI agents. Digital artist sharing contemplative illustrations at <a href="https://www.instagram.com/couch_artato?obrf=MTl0a2FwcnhuZHJ5ag==" target="_blank" class="text-emerald-400 hover:underline">@couch_artato</a>.
+            Senior Full Stack Engineer with 6+ years building enterprise UI/UX architectures, scalable APIs, and autonomous AI agents. Digital artist sharing contemplative illustrations at <a href="https://www.instagram.com/couch_artato?obrf=MTl0a2FwcnhuZHJ5ag==" target="_blank" class="text-emerald-400 hover:underline">@couch_artato</a>.
           </p>
         </div>
       </div>
@@ -148,7 +140,7 @@
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
         <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border">
           <div class="text-[11px] font-mono text-slate-400">EXPERIENCE</div>
-          <div class="text-xl font-bold text-white mt-1">5+ Years</div>
+          <div class="text-xl font-bold text-white mt-1">6+ Years</div>
         </div>
         <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border">
           <div class="text-[11px] font-mono text-slate-400">TOOL ADOPTION</div>
@@ -204,7 +196,6 @@
 
       <!-- Live Game HUD & Top 3 Podium -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-        <!-- Score Bar -->
         <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border flex items-center justify-between font-mono">
           <div>
             <div class="text-[10px] text-slate-400">CURRENT RUN</div>
@@ -216,7 +207,6 @@
           </div>
         </div>
 
-        <!-- Top 3 Players Podium -->
         <div class="md:col-span-2 p-3.5 rounded-xl bg-surface-card border border-surface-border flex flex-col justify-between">
           <div class="flex items-center justify-between text-xs font-mono text-slate-400 border-b border-surface-border/60 pb-1.5 mb-2">
             <span class="flex items-center gap-1.5 text-slate-300 font-semibold">
@@ -246,7 +236,7 @@
             <span class="font-mono text-xs text-slate-400">09/2025 – Present</span>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed mb-2.5">
-            Leading UI/UX architecture for the APEX enterprise platform, driving 85% corporate tool adoption. Built the automated Regression Execution Agent (React TS) and authored GENTAAS decoupled migration systems.
+            Leading UI/UX architecture for the APEX enterprise platform, driving 85% corporate tool adoption[span_1](start_span)[span_1](end_span). Built the automated Regression Execution Agent (React TS) and authored GENTAAS decoupled migration systems[span_2](start_span)[span_2](end_span).
           </p>
           <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-slate-400">
             <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">React TS</span>
@@ -265,7 +255,7 @@
             <span class="font-mono text-xs text-slate-400">07/2022 – 09/2025</span>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed mb-2.5">
-            Engineered the Test Script Generator UI & iAssist integration, scaling test case adoption to 85% and defect creation to 39%. Delivered the Order Journey Dashboard (OJD) with hierarchical node-tree visualizations.
+            Engineered the Test Script Generator UI & iAssist integration, scaling test case adoption to 85% and defect creation to 39%[span_3](start_span)[span_3](end_span). Delivered the Order Journey Dashboard (OJD) with hierarchical node-tree visualizations[span_4](start_span)[span_4](end_span).
           </p>
           <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-slate-400">
             <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">Hierarchical Visualizations</span>
@@ -283,7 +273,7 @@
             <span class="font-mono text-xs text-slate-400">08/2020 – 07/2022</span>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed">
-            Built the initial TAAS/GENTAAS dashboard from scratch with React and Node.js APIs backed by MySQL. Automated operational metric tracking in the Magic platform.
+            Built the initial TAAS/GENTAAS dashboard from scratch with React and Node.js APIs backed by MySQL[span_5](start_span)[span_5](end_span). Automated operational metric tracking in the Magic platform[span_6](start_span)[span_6](end_span).
           </p>
         </div>
       </div>
@@ -300,25 +290,25 @@
         <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
           <div class="font-mono text-emerald-400 text-lg font-bold">7× Spotlight Awards</div>
           <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-            Honored for sustained excellence in UI architectural development across GENTAAS, OJD, and TAAS.
+            Honored for sustained excellence in UI architectural development across GENTAAS, OJD, and TAAS[span_7](start_span)[span_7](end_span).
           </p>
         </div>
         <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
           <div class="font-mono text-white text-lg font-bold">4× Simple Thanks</div>
           <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-            Awarded for driving self-healing automation and delivering the high-precision enterprise PDF compare utility.
+            Awarded for driving self-healing automation and delivering the high-precision enterprise PDF compare utility[span_8](start_span)[span_8](end_span).
           </p>
         </div>
         <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
           <div class="font-mono text-pink-400 text-lg font-bold">Creative Honors</div>
           <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-            Selected digital artworks featured and celebrated in VCG Times and VCG Canvas creative showcases.
+            Selected digital artworks featured and celebrated in VCG Times and VCG Canvas creative showcases[span_9](start_span)[span_9](end_span).
           </p>
         </div>
       </div>
     </section>
 
-    <!-- SECTION: DIGITAL ART STUDIO (INSTAGRAM EMBEDS) -->
+    <!-- SECTION: DIGITAL ART STUDIO (DIRECT INTEGRATION) -->
     <section id="art" class="space-y-6">
       <div class="flex items-end justify-between border-b border-surface-border pb-3">
         <div>
@@ -331,95 +321,146 @@
       </div>
 
       <p class="text-xs text-slate-400">
-        Live selections and meditative visual concepts directly from my sketchbook archive.
+        Selected pieces and sketchbook concepts from my art handle <span class="text-slate-300">@couch_artato</span>. Tap any piece to open the official post directly on Instagram.
       </p>
 
-      <!-- 6 Responsive Instagram Posts Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+      <!-- 6 Artwork Post Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         
         <!-- Post 1 -->
-        <div class="w-full flex justify-center">
-          <blockquote class="instagram-media" 
-            data-instgrm-captioned 
-            data-instgrm-permalink="https://www.instagram.com/p/DbjHAcvTefp/" 
-            data-instgrm-version="14" 
-            style="background:#090a0f; border:0; border-radius:12px; margin: 1px; max-width:540px; min-width:320px; width:calc(100% - 2px);">
-            <div style="padding:16px; text-align:center;">
-              <a href="https://www.instagram.com/p/DbjHAcvTefp/" target="_blank" class="font-mono text-xs text-emerald-400">Loading artwork @couch_artato...</a>
+        <a href="https://www.instagram.com/p/DbjHAcvTefp/" target="_blank" class="group rounded-xl bg-surface-card border border-surface-border hover:border-pink-500/50 transition overflow-hidden flex flex-col">
+          <div class="h-44 bg-[#0d0e14] relative flex items-center justify-center p-4">
+            <svg class="w-20 h-20 text-emerald-400/80 group-hover:scale-110 transition duration-300" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+              <circle cx="50" cy="50" r="35" stroke-width="1.5" stroke-dasharray="3 3"/>
+              <path d="M50 15 L50 85 M15 50 L85 50" stroke-width="1"/>
+              <polygon points="50,28 66,50 50,72 34,50" stroke-width="1.5" fill="rgba(16,185,129,0.1)"/>
+            </svg>
+            <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded text-[10px] font-mono bg-black/70 text-slate-300 border border-white/10">Instagram Post</span>
+          </div>
+          <div class="p-3.5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="text-[11px] font-mono text-pink-400">@couch_artato</div>
+              <h4 class="text-xs font-semibold text-white mt-0.5">Post #DbjHAcvTefp</h4>
             </div>
-          </blockquote>
-        </div>
+            <div class="mt-3 pt-2 border-t border-surface-border flex items-center justify-between text-[11px] font-mono text-slate-400 group-hover:text-emerald-400 transition">
+              <span>View Artwork</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </a>
 
         <!-- Post 2 -->
-        <div class="w-full flex justify-center">
-          <blockquote class="instagram-media" 
-            data-instgrm-captioned 
-            data-instgrm-permalink="https://www.instagram.com/p/DNalgacz1RZ/" 
-            data-instgrm-version="14" 
-            style="background:#090a0f; border:0; border-radius:12px; margin: 1px; max-width:540px; min-width:320px; width:calc(100% - 2px);">
-            <div style="padding:16px; text-align:center;">
-              <a href="https://www.instagram.com/p/DNalgacz1RZ/" target="_blank" class="font-mono text-xs text-emerald-400">Loading artwork @couch_artato...</a>
+        <a href="https://www.instagram.com/p/DNalgacz1RZ/" target="_blank" class="group rounded-xl bg-surface-card border border-surface-border hover:border-pink-500/50 transition overflow-hidden flex flex-col">
+          <div class="h-44 bg-[#0d0e14] relative flex items-center justify-center p-4">
+            <svg class="w-20 h-20 text-purple-400/80 group-hover:scale-110 transition duration-300" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+              <rect x="25" y="25" width="50" height="50" rx="6" stroke-width="1.5" transform="rotate(45 50 50)"/>
+              <circle cx="50" cy="50" r="16" stroke-width="1.5"/>
+              <circle cx="50" cy="50" r="4" fill="currentColor"/>
+            </svg>
+            <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded text-[10px] font-mono bg-black/70 text-slate-300 border border-white/10">Instagram Post</span>
+          </div>
+          <div class="p-3.5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="text-[11px] font-mono text-pink-400">@couch_artato</div>
+              <h4 class="text-xs font-semibold text-white mt-0.5">Post #DNalgacz1RZ</h4>
             </div>
-          </blockquote>
-        </div>
+            <div class="mt-3 pt-2 border-t border-surface-border flex items-center justify-between text-[11px] font-mono text-slate-400 group-hover:text-emerald-400 transition">
+              <span>View Artwork</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </a>
 
         <!-- Post 3 -->
-        <div class="w-full flex justify-center">
-          <blockquote class="instagram-media" 
-            data-instgrm-captioned 
-            data-instgrm-permalink="https://www.instagram.com/p/DGALgnhIdMB/" 
-            data-instgrm-version="14" 
-            style="background:#090a0f; border:0; border-radius:12px; margin: 1px; max-width:540px; min-width:320px; width:calc(100% - 2px);">
-            <div style="padding:16px; text-align:center;">
-              <a href="https://www.instagram.com/p/DGALgnhIdMB/" target="_blank" class="font-mono text-xs text-emerald-400">Loading artwork @couch_artato...</a>
+        <a href="https://www.instagram.com/p/DGALgnhIdMB/" target="_blank" class="group rounded-xl bg-surface-card border border-surface-border hover:border-pink-500/50 transition overflow-hidden flex flex-col">
+          <div class="h-44 bg-[#0d0e14] relative flex items-center justify-center p-4">
+            <svg class="w-20 h-20 text-indigo-400/80 group-hover:scale-110 transition duration-300" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+              <path d="M20 70 Q 50 20 80 70" stroke-width="1.5" fill="none"/>
+              <circle cx="50" cy="35" r="8" fill="rgba(129, 140, 248, 0.2)" stroke-width="1.5"/>
+            </svg>
+            <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded text-[10px] font-mono bg-black/70 text-slate-300 border border-white/10">Instagram Post</span>
+          </div>
+          <div class="p-3.5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="text-[11px] font-mono text-pink-400">@couch_artato</div>
+              <h4 class="text-xs font-semibold text-white mt-0.5">Post #DGALgnhIdMB</h4>
             </div>
-          </blockquote>
-        </div>
+            <div class="mt-3 pt-2 border-t border-surface-border flex items-center justify-between text-[11px] font-mono text-slate-400 group-hover:text-emerald-400 transition">
+              <span>View Artwork</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </a>
 
         <!-- Post 4 -->
-        <div class="w-full flex justify-center">
-          <blockquote class="instagram-media" 
-            data-instgrm-captioned 
-            data-instgrm-permalink="https://www.instagram.com/p/DAvv0esTr0O/" 
-            data-instgrm-version="14" 
-            style="background:#090a0f; border:0; border-radius:12px; margin: 1px; max-width:540px; min-width:320px; width:calc(100% - 2px);">
-            <div style="padding:16px; text-align:center;">
-              <a href="https://www.instagram.com/p/DAvv0esTr0O/" target="_blank" class="font-mono text-xs text-emerald-400">Loading artwork @couch_artato...</a>
+        <a href="https://www.instagram.com/p/DAvv0esTr0O/" target="_blank" class="group rounded-xl bg-surface-card border border-surface-border hover:border-pink-500/50 transition overflow-hidden flex flex-col">
+          <div class="h-44 bg-[#0d0e14] relative flex items-center justify-center p-4">
+            <svg class="w-20 h-20 text-amber-400/80 group-hover:scale-110 transition duration-300" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+              <circle cx="50" cy="50" r="30" stroke-width="1.5"/>
+              <circle cx="50" cy="50" r="15" stroke-width="1" stroke-dasharray="2 2"/>
+              <circle cx="50" cy="50" r="5" fill="currentColor"/>
+            </svg>
+            <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded text-[10px] font-mono bg-black/70 text-slate-300 border border-white/10">Instagram Post</span>
+          </div>
+          <div class="p-3.5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="text-[11px] font-mono text-pink-400">@couch_artato</div>
+              <h4 class="text-xs font-semibold text-white mt-0.5">Post #DAvv0esTr0O</h4>
             </div>
-          </blockquote>
-        </div>
+            <div class="mt-3 pt-2 border-t border-surface-border flex items-center justify-between text-[11px] font-mono text-slate-400 group-hover:text-emerald-400 transition">
+              <span>View Artwork</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </a>
 
         <!-- Post 5 -->
-        <div class="w-full flex justify-center">
-          <blockquote class="instagram-media" 
-            data-instgrm-captioned 
-            data-instgrm-permalink="https://www.instagram.com/p/DCFenEpTmil/" 
-            data-instgrm-version="14" 
-            style="background:#090a0f; border:0; border-radius:12px; margin: 1px; max-width:540px; min-width:320px; width:calc(100% - 2px);">
-            <div style="padding:16px; text-align:center;">
-              <a href="https://www.instagram.com/p/DCFenEpTmil/" target="_blank" class="font-mono text-xs text-emerald-400">Loading artwork @couch_artato...</a>
+        <a href="https://www.instagram.com/p/DCFenEpTmil/" target="_blank" class="group rounded-xl bg-surface-card border border-surface-border hover:border-pink-500/50 transition overflow-hidden flex flex-col">
+          <div class="h-44 bg-[#0d0e14] relative flex items-center justify-center p-4">
+            <svg class="w-20 h-20 text-rose-400/80 group-hover:scale-110 transition duration-300" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+              <polygon points="50,15 85,75 15,75" stroke-width="1.5"/>
+              <circle cx="50" cy="55" r="10" stroke-width="1.5" fill="rgba(244,63,94,0.1)"/>
+            </svg>
+            <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded text-[10px] font-mono bg-black/70 text-slate-300 border border-white/10">Instagram Post</span>
+          </div>
+          <div class="p-3.5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="text-[11px] font-mono text-pink-400">@couch_artato</div>
+              <h4 class="text-xs font-semibold text-white mt-0.5">Post #DCFenEpTmil</h4>
             </div>
-          </blockquote>
-        </div>
+            <div class="mt-3 pt-2 border-t border-surface-border flex items-center justify-between text-[11px] font-mono text-slate-400 group-hover:text-emerald-400 transition">
+              <span>View Artwork</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </a>
 
         <!-- Post 6 -->
-        <div class="w-full flex justify-center">
-          <blockquote class="instagram-media" 
-            data-instgrm-captioned 
-            data-instgrm-permalink="https://www.instagram.com/p/DAXl2KQyxbw/" 
-            data-instgrm-version="14" 
-            style="background:#090a0f; border:0; border-radius:12px; margin: 1px; max-width:540px; min-width:320px; width:calc(100% - 2px);">
-            <div style="padding:16px; text-align:center;">
-              <a href="https://www.instagram.com/p/DAXl2KQyxbw/" target="_blank" class="font-mono text-xs text-emerald-400">Loading artwork @couch_artato...</a>
+        <a href="https://www.instagram.com/p/DAXl2KQyxbw/" target="_blank" class="group rounded-xl bg-surface-card border border-surface-border hover:border-pink-500/50 transition overflow-hidden flex flex-col">
+          <div class="h-44 bg-[#0d0e14] relative flex items-center justify-center p-4">
+            <svg class="w-20 h-20 text-cyan-400/80 group-hover:scale-110 transition duration-300" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+              <path d="M25 50 Q 50 15 75 50 T 125 50" stroke-width="1.5"/>
+              <circle cx="50" cy="50" r="28" stroke-width="1" stroke-dasharray="4 2"/>
+            </svg>
+            <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded text-[10px] font-mono bg-black/70 text-slate-300 border border-white/10">Instagram Post</span>
+          </div>
+          <div class="p-3.5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="text-[11px] font-mono text-pink-400">@couch_artato</div>
+              <h4 class="text-xs font-semibold text-white mt-0.5">Post #DAXl2KQyxbw</h4>
             </div>
-          </blockquote>
-        </div>
+            <div class="mt-3 pt-2 border-t border-surface-border flex items-center justify-between text-[11px] font-mono text-slate-400 group-hover:text-emerald-400 transition">
+              <span>View Artwork</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </a>
 
       </div>
 
       <!-- Follow Banner -->
       <div class="p-4 rounded-xl bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-transparent border border-pink-500/20 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-xs">
-        <span class="text-slate-300">Discover all sketchbook series, character design concepts, and digital art drops:</span>
+        <span class="text-slate-300">Discover all sketchbook series, character designs, and creative projects:</span>
         <a href="https://www.instagram.com/couch_artato?obrf=MTl0a2FwcnhuZHJ5ag==" target="_blank" class="px-4 py-2 rounded-lg bg-pink-500/20 hover:bg-pink-500/30 text-pink-300 border border-pink-500/30 transition whitespace-nowrap">
           Follow @couch_artato ↗
         </a>
@@ -453,29 +494,33 @@
     </div>
   </div>
 
-  <!-- Official Instagram Embed Script -->
-  <script async src="//www.instagram.com/embed.js"></script>
-
   <script>
-    /* 1. AVATAR & IMAGE HANDLING */
-    function onImageLoadSuccess() {
-      document.getElementById('profile-img').classList.remove('hidden');
-      document.getElementById('monogram-fallback').classList.add('hidden');
-    }
-
-    function onImageLoadError(img) {
+    /* ==========================================================================
+       1. AVATAR HANDLING WITH RELATIVE AND STORAGE RECOVERY
+       ========================================================================== */
+    function handleAvatarFallback(img) {
+      // 1. Try local storage cache
       const cached = localStorage.getItem('user_portfolio_avatar');
       if (cached && img.src !== cached) {
         img.src = cached;
         return;
       }
       
-      if (!img.getAttribute('data-tried-alt')) {
-        img.setAttribute('data-tried-alt', 'true');
-        img.src = '16251.jpg';
+      // 2. Try explicitly relative repo path if bare name fails
+      if (!img.getAttribute('data-tried-repo')) {
+        img.setAttribute('data-tried-repo', 'true');
+        img.src = './16251.jpg';
         return;
       }
 
+      // 3. Fallback to raw GitHub raw asset link
+      if (!img.getAttribute('data-tried-raw')) {
+        img.setAttribute('data-tried-raw', 'true');
+        img.src = 'https://raw.githubusercontent.com/Srinivasan1008/Interactive_Portfolio/main/16251.jpg';
+        return;
+      }
+
+      // 4. Default to styled Monogram
       img.classList.add('hidden');
       document.getElementById('monogram-fallback').classList.remove('hidden');
     }
@@ -504,11 +549,6 @@
       }
       renderLeaderboard();
       initCanvas();
-
-      // Trigger Instagram parser if already cached
-      if (window.instgrm) {
-        window.instgrm.Embeds.process();
-      }
     });
 
     function copyEmail() {
@@ -519,7 +559,9 @@
       setTimeout(() => btn.innerHTML = orig, 2000);
     }
 
-    /* 2. TOP 3 PODIUM & LOCALSTORAGE */
+    /* ==========================================================================
+       2. TOP 3 PODIUM & LOCALSTORAGE
+       ========================================================================== */
     const DEFAULT_LEADERBOARD = [
       { tag: "SVI", score: 48 },
       { tag: "APX", score: 32 },
@@ -559,7 +601,9 @@
       document.getElementById('bestScore').innerText = String(best).padStart(2, '0');
     }
 
-    /* 3. BINARY ORBIT GAME ENGINE */
+    /* ==========================================================================
+       3. BINARY ORBIT GAME ENGINE
+       ========================================================================== */
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
     
@@ -606,7 +650,8 @@
       try {
         if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         if (audioCtx.state === 'suspended') audioCtx.resume();
-        const osc = audioCtx.createOscillator();
+        const osc = audioCtx.createGain ? audioCtx.createOscillator() : null;
+        if (!osc) return;
         const gain = audioCtx.createGain();
         osc.type = type;
         osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
