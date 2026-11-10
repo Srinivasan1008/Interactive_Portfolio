@@ -44,7 +44,6 @@
     body {
       background-color: #08090d;
       color: #e2e8f0;
-      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     }
     ::selection {
       background: #10b981;
@@ -56,31 +55,20 @@
         linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
     }
-    
-    /* PURE ARTWORK CROP: Trims top profile header and bottom view-more footer */
-    .art-post-wrapper {
-      position: relative;
-      width: 100%;
-      height: 380px;
-      overflow: hidden;
-      border-radius: 16px;
-      background: #0d0e14;
-      border: 1px solid #1f2330;
-    }
-    .art-post-wrapper iframe,
-    .art-post-wrapper .instagram-media {
-      position: relative !important;
-      top: -54px !important; /* Crops off "couch_artato View profile" header */
+    /* Clean Instagram uncaptioned embeds */
+    .instagram-media {
+      background: #0d0e14 !important;
+      border: 1px solid #1f2330 !important;
+      border-radius: 12px !important;
       margin: 0 auto !important;
-      width: 100% !important;
       min-width: 100% !important;
-      border: none !important;
+      max-width: 100% !important;
     }
   </style>
 </head>
 <body class="min-h-screen grid-bg font-sans antialiased selection:bg-emerald-500 selection:text-black">
 
-  <!-- Header -->
+  <!-- Minimal Header -->
   <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-[#08090d]/85 border-b border-surface-border">
     <div class="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
       <a href="#hero" class="flex items-center gap-2 group">
@@ -107,14 +95,17 @@
           <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-surface-card border border-surface-border overflow-hidden flex items-center justify-center shadow-lg transition-transform group-hover:scale-[1.02]">
             <img 
               id="profile-img" 
-              src="./16251.jpg" 
+              src="16251.jpg" 
               alt="Srinivasan Venkatesan" 
               class="w-full h-full object-cover object-top" 
-              onerror="tryNextAvatar(this)" 
+              onerror="handleAvatarError(this)" 
             />
-            <div id="monogram-fallback" class="hidden font-mono font-bold text-2xl text-slate-400">SV</div>
+            <div id="monogram-fallback" class="hidden flex-col items-center justify-center font-mono font-bold text-2xl text-emerald-400">
+              SV
+              <span class="text-[9px] font-normal text-slate-500">Tap to upload</span>
+            </div>
           </div>
-          <span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-[#08090d]" title="Active"></span>
+          <span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-[#08090d]"></span>
           <input type="file" id="avatar-input" accept="image/*" class="hidden" onchange="handleManualAvatarUpload(event)" />
         </div>
 
@@ -148,7 +139,7 @@
         </button>
       </div>
 
-      <!-- Quick Metrics Strip -->
+      <!-- Metrics -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
         <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border">
           <div class="text-[11px] font-mono text-slate-400">EXPERIENCE</div>
@@ -245,7 +236,7 @@
             <span class="font-mono text-xs text-slate-400">09/2025 – Present</span>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed mb-2.5">
-            Leading UI/UX architecture for the APEX enterprise platform, driving 85% corporate tool adoption[span_12](start_span)[span_12](end_span). Built the automated Regression Execution Agent (React TS) and authored GENTAAS decoupled migration systems[span_13](start_span)[span_13](end_span).
+            Leading UI/UX architecture for the APEX enterprise platform, driving 85% corporate tool adoption[span_0](start_span)[span_0](end_span). Built the automated Regression Execution Agent (React TS) and authored GENTAAS decoupled migration systems[span_1](start_span)[span_1](end_span).
           </p>
           <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-slate-400">
             <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">React TS</span>
@@ -264,7 +255,7 @@
             <span class="font-mono text-xs text-slate-400">07/2022 – 09/2025</span>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed mb-2.5">
-            Engineered the Test Script Generator UI & iAssist integration, scaling test case adoption to 85% and defect creation to 39%[span_14](start_span)[span_14](end_span). Delivered the Order Journey Dashboard (OJD) with hierarchical node-tree visualizations[span_15](start_span)[span_15](end_span).
+            Engineered the Test Script Generator UI & iAssist integration, scaling test case adoption to 85% and defect creation to 39%[span_2](start_span)[span_2](end_span). Delivered the Order Journey Dashboard (OJD) with hierarchical node-tree visualizations[span_3](start_span)[span_3](end_span).
           </p>
           <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-slate-400">
             <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">Hierarchical Visualizations</span>
@@ -282,7 +273,7 @@
             <span class="font-mono text-xs text-slate-400">08/2020 – 07/2022</span>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed">
-            Built the initial TAAS/GENTAAS dashboard from scratch with React and Node.js APIs backed by MySQL[span_16](start_span)[span_16](end_span). Automated operational metric tracking in the Magic platform[span_17](start_span)[span_17](end_span).
+            Built the initial TAAS/GENTAAS dashboard from scratch with React and Node.js APIs backed by MySQL[span_4](start_span)[span_4](end_span). Automated operational metric tracking in the Magic platform[span_5](start_span)[span_5](end_span).
           </p>
         </div>
       </div>
@@ -299,25 +290,25 @@
         <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
           <div class="font-mono text-emerald-400 text-lg font-bold">7× Spotlight Awards</div>
           <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-            Honored for sustained excellence in UI architectural development across GENTAAS, OJD, and TAAS[span_18](start_span)[span_18](end_span).
+            Honored for sustained excellence in UI architectural development across GENTAAS, OJD, and TAAS[span_6](start_span)[span_6](end_span).
           </p>
         </div>
         <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
           <div class="font-mono text-white text-lg font-bold">4× Simple Thanks</div>
           <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-            Awarded for driving self-healing automation and delivering the high-precision enterprise PDF compare utility[span_19](start_span)[span_19](end_span).
+            Awarded for driving self-healing automation and delivering the high-precision enterprise PDF compare utility[span_7](start_span)[span_7](end_span).
           </p>
         </div>
         <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
           <div class="font-mono text-pink-400 text-lg font-bold">Creative Honors</div>
           <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-            Selected digital artworks featured and celebrated in VCG Times and VCG Canvas creative showcases[span_20](start_span)[span_20](end_span).
+            Selected digital artworks featured and celebrated in VCG Times and VCG Canvas creative showcases[span_8](start_span)[span_8](end_span).
           </p>
         </div>
       </div>
     </section>
 
-    <!-- SECTION: DIGITAL ART STUDIO (CROPPED TO PURE POST ONLY) -->
+    <!-- SECTION: DIGITAL ART STUDIO (STABLE EMBEDS) -->
     <section id="art" class="space-y-6">
       <div class="flex items-end justify-between border-b border-surface-border pb-3">
         <div>
@@ -333,11 +324,11 @@
         Illustrations and sketches from my digital gallery. Tap on any post to open it directly on Instagram.
       </p>
 
-      <!-- 6 Cropped Art Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- 6 Natural Instagram Posts (No strict CSS clipping to prevent iframe termination) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
         
         <!-- Post 1 -->
-        <div class="art-post-wrapper">
+        <div class="w-full">
           <blockquote class="instagram-media" 
             data-instgrm-permalink="https://www.instagram.com/p/DbjHAcvTefp/" 
             data-instgrm-version="14">
@@ -346,7 +337,7 @@
         </div>
 
         <!-- Post 2 -->
-        <div class="art-post-wrapper">
+        <div class="w-full">
           <blockquote class="instagram-media" 
             data-instgrm-permalink="https://www.instagram.com/p/DNalgacz1RZ/" 
             data-instgrm-version="14">
@@ -355,7 +346,7 @@
         </div>
 
         <!-- Post 3 -->
-        <div class="art-post-wrapper">
+        <div class="w-full">
           <blockquote class="instagram-media" 
             data-instgrm-permalink="https://www.instagram.com/p/DGALgnhIdMB/" 
             data-instgrm-version="14">
@@ -364,7 +355,7 @@
         </div>
 
         <!-- Post 4 -->
-        <div class="art-post-wrapper">
+        <div class="w-full">
           <blockquote class="instagram-media" 
             data-instgrm-permalink="https://www.instagram.com/p/DAvv0esTr0O/" 
             data-instgrm-version="14">
@@ -373,7 +364,7 @@
         </div>
 
         <!-- Post 5 -->
-        <div class="art-post-wrapper">
+        <div class="w-full">
           <blockquote class="instagram-media" 
             data-instgrm-permalink="https://www.instagram.com/p/DCFenEpTmil/" 
             data-instgrm-version="14">
@@ -382,7 +373,7 @@
         </div>
 
         <!-- Post 6 -->
-        <div class="art-post-wrapper">
+        <div class="w-full">
           <blockquote class="instagram-media" 
             data-instgrm-permalink="https://www.instagram.com/p/DAXl2KQyxbw/" 
             data-instgrm-version="14">
@@ -394,7 +385,7 @@
 
       <!-- Follow Banner -->
       <div class="p-4 rounded-xl bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-transparent border border-pink-500/20 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-xs">
-        <span class="text-slate-300">Discover full sketchbook archives, character studies, and concept drops:</span>
+        <span class="text-slate-300">Discover all sketchbook series, character design concepts, and digital art drops:</span>
         <a href="https://www.instagram.com/couch_artato?obrf=MTl0a2FwcnhuZHJ5ag==" target="_blank" class="px-4 py-2 rounded-lg bg-pink-500/20 hover:bg-pink-500/30 text-pink-300 border border-pink-500/30 transition whitespace-nowrap">
           Follow @couch_artato ↗
         </a>
@@ -434,27 +425,25 @@
 
   <script>
     /* 1. BULLETPROOF AVATAR CASCADE */
-    let avatarAttempts = 0;
-    function tryNextAvatar(img) {
-      avatarAttempts++;
+    let avatarAttempt = 0;
+    function handleAvatarError(img) {
+      avatarAttempt++;
       const cached = localStorage.getItem('user_portfolio_avatar');
       if (cached && img.src !== cached) {
         img.src = cached;
         return;
       }
-      if (avatarAttempts === 1) {
-        // Try root path without dot
-        img.src = '16251.jpg';
+      if (avatarAttempt === 1) {
+        img.src = './16251.jpg';[span_9](start_span)[span_9](end_span)
         return;
       }
-      if (avatarAttempts === 2) {
-        // Try raw GitHub content link directly
-        img.src = 'https://raw.githubusercontent.com/Srinivasan1008/Interactive_Portfolio/main/16251.jpg';
+      if (avatarAttempt === 2) {
+        img.src = 'https://raw.githubusercontent.com/Srinivasan1008/Interactive_Portfolio/main/16251.jpg';[span_10](start_span)[span_10](end_span)
         return;
       }
-      // If network fails completely, show stylized SV monogram
       img.classList.add('hidden');
       document.getElementById('monogram-fallback').classList.remove('hidden');
+      document.getElementById('monogram-fallback').classList.add('flex');
     }
 
     function handleManualAvatarUpload(event) {
@@ -467,6 +456,7 @@
           img.src = base64Data;
           img.classList.remove('hidden');
           document.getElementById('monogram-fallback').classList.add('hidden');
+          document.getElementById('monogram-fallback').classList.remove('flex');
           localStorage.setItem('user_portfolio_avatar', base64Data);
         };
         reader.readAsDataURL(file);
