@@ -56,27 +56,6 @@
         linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
     }
-    
-    /* Strict viewport cropping for clean visual-only Instagram cards */
-    .insta-crop-container {
-      position: relative;
-      width: 100%;
-      height: 480px;
-      overflow: hidden;
-      border-radius: 16px;
-      background-color: #0d0e14;
-      border: 1px solid #1f2330;
-    }
-    .insta-crop-container iframe,
-    .insta-crop-container .instagram-media {
-      margin: 0 auto !important;
-      position: relative;
-      top: -5px !important;
-      width: 100% !important;
-      min-width: 100% !important;
-      border: none !important;
-      border-radius: 16px !important;
-    }
   </style>
 </head>
 <body class="min-h-screen grid-bg font-sans antialiased selection:bg-emerald-500 selection:text-black">
@@ -103,15 +82,15 @@
     <section id="hero" class="space-y-6 pt-4">
       <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
         
-        <!-- Profile Picture Box -->
-        <div class="relative group cursor-pointer" onclick="document.getElementById('avatar-input').click()" title="Tap to select your photo directly from phone">
+        <!-- Profile Picture Box (Bulletproof Local + Dynamic Picker) -->
+        <div class="relative group cursor-pointer" onclick="document.getElementById('avatar-input').click()" title="Tap to pick/change photo">
           <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-surface-card border border-surface-border overflow-hidden flex items-center justify-center shadow-lg transition-transform group-hover:scale-[1.02]">
             <img 
               id="profile-img" 
               src="16251.jpg" 
               alt="Srinivasan Venkatesan" 
               class="w-full h-full object-cover object-top" 
-              onerror="handleAvatarFallback(this)" 
+              onerror="handleAvatarError(this)" 
             />
             <div id="monogram-fallback" class="hidden font-mono font-bold text-2xl text-slate-400">SV</div>
           </div>
@@ -141,7 +120,7 @@
         <a href="https://www.instagram.com/couch_artato?obrf=MTl0a2FwcnhuZHJ5ag==" target="_blank" class="px-3 py-2 rounded-lg bg-surface-card border border-surface-border hover:border-pink-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5">
           <span>📸</span> @couch_artato
         </a>
-        <a href="https://linkedin.com/in/srinivasan-v-9a08157a" target="_blank" class="px-3 py-2 rounded-lg bg-surface-card border border-surface-border hover:border-blue-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+        <a href="https://www.linkedin.com/in/srinivasan-v-9a08157a?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="px-3 py-2 rounded-lg bg-surface-card border border-surface-border hover:border-blue-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5">
           <span>💼</span> LinkedIn
         </a>
         <button onclick="copyEmail()" id="copy-email-btn" class="px-3 py-2 rounded-lg bg-surface-card border border-surface-border hover:border-emerald-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5">
@@ -149,7 +128,7 @@
         </button>
       </div>
 
-      <!-- Quick Metrics Strip -->
+      <!-- Metrics -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
         <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border">
           <div class="text-[11px] font-mono text-slate-400">EXPERIENCE</div>
@@ -205,7 +184,6 @@
         </div>
       </div>
 
-      <!-- Score Bar & Top 3 Podium -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
         <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border flex items-center justify-between font-mono">
           <div>
@@ -319,7 +297,7 @@
       </div>
     </section>
 
-    <!-- SECTION: DIGITAL ART STUDIO (CLEAN VISUAL CROP) -->
+    <!-- SECTION: DIGITAL ART STUDIO (NATIVE CARDS LINKED DIRECTLY TO INSTAGRAM) -->
     <section id="art" class="space-y-6">
       <div class="flex items-end justify-between border-b border-surface-border pb-3">
         <div>
@@ -332,65 +310,145 @@
       </div>
 
       <p class="text-xs text-slate-400">
-        Curated visual sketches and character art. Cropped cleanly to focus solely on the visual concept.
+        Selected character studies, geometric concepts, and digital ink pieces from <span class="text-white font-mono">@couch_artato</span>. Tap any card to open the post directly on Instagram.
       </p>
 
-      <!-- 6 Cropped Instagram Frames -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- 6 Interactive Artwork Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         
-        <!-- Post 1 -->
-        <div class="insta-crop-container">
-          <blockquote class="instagram-media" 
-            data-instgrm-permalink="https://www.instagram.com/p/DbjHAcvTefp/" 
-            data-instgrm-version="14">
-            <a href="https://www.instagram.com/p/DbjHAcvTefp/" target="_blank"></a>
-          </blockquote>
-        </div>
+        <!-- Post 1: DbjHAcvTefp -->
+        <a href="https://www.instagram.com/p/DbjHAcvTefp/?vrfl=MWpzM3B3dnE3c2V2Mw==" target="_blank" class="group rounded-2xl bg-surface-card border border-surface-border hover:border-pink-500/50 transition overflow-hidden flex flex-col shadow-lg">
+          <div class="h-52 bg-[#0c0d14] relative flex items-center justify-center p-6 border-b border-surface-border/50">
+            <svg class="w-24 h-24 text-emerald-400/90 group-hover:scale-110 transition duration-300" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+              <circle cx="50" cy="50" r="38" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <circle cx="50" cy="50" r="22" stroke-width="1"/>
+              <polygon points="50,26 66,50 50,74 34,50" stroke-width="1.5" fill="rgba(16,185,129,0.12)"/>
+              <circle cx="50" cy="50" r="4" fill="currentColor"/>
+            </svg>
+            <span class="absolute top-3 right-3 px-2 py-0.5 rounded text-[10px] font-mono bg-black/70 text-pink-400 border border-pink-500/20">@couch_artato</span>
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="text-[11px] font-mono text-slate-400">Ink & Vector Study</div>
+              <h4 class="text-sm font-semibold text-white mt-1 group-hover:text-pink-300 transition">Geometric Harmony #1</h4>
+            </div>
+            <div class="mt-4 pt-2.5 border-t border-surface-border/60 flex items-center justify-between text-xs font-mono text-slate-400 group-hover:text-emerald-400 transition">
+              <span>View Post on Instagram</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </a>
 
-        <!-- Post 2 -->
-        <div class="insta-crop-container">
-          <blockquote class="instagram-media" 
-            data-instgrm-permalink="https://www.instagram.com/p/DNalgacz1RZ/" 
-            data-instgrm-version="14">
-            <a href="https://www.instagram.com/p/DNalgacz1RZ/" target="_blank"></a>
-          </blockquote>
-        </div>
+        <!-- Post 2: DNalgacz1RZ -->
+        <a href="https://www.instagram.com/p/DNalgacz1RZ/?dlrf=MWpqam1pdTIwcGE2eQ==" target="_blank" class="group rounded-2xl bg-surface-card border border-surface-border hover:border-pink-500/50 transition overflow-hidden flex flex-col shadow-lg">
+          <div class="h-52 bg-[#0c0d14] relative flex items-center justify-center p-6 border-b border-surface-border/50">
+            <svg class="w-24 h-24 text-purple-400/90 group-hover:scale-110 transition duration-300" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+              <rect x="25" y="25" width="50" height="50" rx="8" stroke-width="1.5" transform="rotate(45 50 50)"/>
+              <circle cx="50" cy="50" r="18" stroke-width="1.5" stroke-dasharray="2 3"/>
+              <circle cx="50" cy="50" r="5" fill="rgba(192,132,252,0.3)"/>
+            </svg>
+            <span class="absolute top-3 right-3 px-2 py-0.5 rounded text-[10px] font-mono bg-black/70 text-pink-400 border border-pink-500/20">@couch_artato</span>
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="text-[11px] font-mono text-slate-400">Digital Concept</div>
+              <h4 class="text-sm font-semibold text-white mt-1 group-hover:text-purple-300 transition">The Prism Gateway</h4>
+            </div>
+            <div class="mt-4 pt-2.5 border-t border-surface-border/60 flex items-center justify-between text-xs font-mono text-slate-400 group-hover:text-emerald-400 transition">
+              <span>View Post on Instagram</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </a>
 
-        <!-- Post 3 -->
-        <div class="insta-crop-container">
-          <blockquote class="instagram-media" 
-            data-instgrm-permalink="https://www.instagram.com/p/DGALgnhIdMB/" 
-            data-instgrm-version="14">
-            <a href="https://www.instagram.com/p/DGALgnhIdMB/" target="_blank"></a>
-          </blockquote>
-        </div>
+        <!-- Post 3: DGALgnhIdMB -->
+        <a href="https://www.instagram.com/p/DGALgnhIdMB/?vrfl=MW5waW5odTNja3U1Mg==" target="_blank" class="group rounded-2xl bg-surface-card border border-surface-border hover:border-pink-500/50 transition overflow-hidden flex flex-col shadow-lg">
+          <div class="h-52 bg-[#0c0d14] relative flex items-center justify-center p-6 border-b border-surface-border/50">
+            <svg class="w-24 h-24 text-indigo-400/90 group-hover:scale-110 transition duration-300" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+              <path d="M20 70 Q 50 20 80 70" stroke-width="1.5" fill="none"/>
+              <path d="M30 75 Q 50 35 70 75" stroke-width="1.5" stroke-dasharray="3 3"/>
+              <circle cx="50" cy="32" r="8" fill="rgba(129,140,248,0.25)" stroke-width="1.5"/>
+            </svg>
+            <span class="absolute top-3 right-3 px-2 py-0.5 rounded text-[10px] font-mono bg-black/70 text-pink-400 border border-pink-500/20">@couch_artato</span>
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="text-[11px] font-mono text-slate-400">Atmospheric Landscape</div>
+              <h4 class="text-sm font-semibold text-white mt-1 group-hover:text-indigo-300 transition">Quiet Horizons</h4>
+            </div>
+            <div class="mt-4 pt-2.5 border-t border-surface-border/60 flex items-center justify-between text-xs font-mono text-slate-400 group-hover:text-emerald-400 transition">
+              <span>View Post on Instagram</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </a>
 
-        <!-- Post 4 -->
-        <div class="insta-crop-container">
-          <blockquote class="instagram-media" 
-            data-instgrm-permalink="https://www.instagram.com/p/DAvv0esTr0O/" 
-            data-instgrm-version="14">
-            <a href="https://www.instagram.com/p/DAvv0esTr0O/" target="_blank"></a>
-          </blockquote>
-        </div>
+        <!-- Post 4: DAvv0esTr0O -->
+        <a href="https://www.instagram.com/p/DAvv0esTr0O/?xtok=eTg1aTNlYWhqc25y" target="_blank" class="group rounded-2xl bg-surface-card border border-surface-border hover:border-pink-500/50 transition overflow-hidden flex flex-col shadow-lg">
+          <div class="h-52 bg-[#0c0d14] relative flex items-center justify-center p-6 border-b border-surface-border/50">
+            <svg class="w-24 h-24 text-amber-400/90 group-hover:scale-110 transition duration-300" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+              <circle cx="50" cy="50" r="32" stroke-width="1.5"/>
+              <circle cx="50" cy="50" r="16" stroke-width="1.5" stroke-dasharray="2 3"/>
+              <polygon points="50,20 54,32 50,44 46,32" fill="currentColor"/>
+              <polygon points="50,56 54,68 50,80 46,68" fill="currentColor"/>
+            </svg>
+            <span class="absolute top-3 right-3 px-2 py-0.5 rounded text-[10px] font-mono bg-black/70 text-pink-400 border border-pink-500/20">@couch_artato</span>
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="text-[11px] font-mono text-slate-400">Minimalist Glyphs</div>
+              <h4 class="text-sm font-semibold text-white mt-1 group-hover:text-amber-300 transition">Solar Dial Concept</h4>
+            </div>
+            <div class="mt-4 pt-2.5 border-t border-surface-border/60 flex items-center justify-between text-xs font-mono text-slate-400 group-hover:text-emerald-400 transition">
+              <span>View Post on Instagram</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </a>
 
-        <!-- Post 5 -->
-        <div class="insta-crop-container">
-          <blockquote class="instagram-media" 
-            data-instgrm-permalink="https://www.instagram.com/p/DCFenEpTmil/" 
-            data-instgrm-version="14">
-            <a href="https://www.instagram.com/p/DCFenEpTmil/" target="_blank"></a>
-          </blockquote>
-        </div>
+        <!-- Post 5: DCFenEpTmil -->
+        <a href="https://www.instagram.com/p/DCFenEpTmil/?obrf=MXR2NjFhMzh2ODNnaA==" target="_blank" class="group rounded-2xl bg-surface-card border border-surface-border hover:border-pink-500/50 transition overflow-hidden flex flex-col shadow-lg">
+          <div class="h-52 bg-[#0c0d14] relative flex items-center justify-center p-6 border-b border-surface-border/50">
+            <svg class="w-24 h-24 text-rose-400/90 group-hover:scale-110 transition duration-300" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+              <polygon points="50,15 85,78 15,78" stroke-width="1.5"/>
+              <polygon points="50,35 72,74 28,74" stroke-width="1" stroke-dasharray="3 2" fill="rgba(244,63,94,0.1)"/>
+              <circle cx="50" cy="58" r="6" fill="currentColor"/>
+            </svg>
+            <span class="absolute top-3 right-3 px-2 py-0.5 rounded text-[10px] font-mono bg-black/70 text-pink-400 border border-pink-500/20">@couch_artato</span>
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="text-[11px] font-mono text-slate-400">Sacred Geometry</div>
+              <h4 class="text-sm font-semibold text-white mt-1 group-hover:text-rose-300 transition">Trigon Relic</h4>
+            </div>
+            <div class="mt-4 pt-2.5 border-t border-surface-border/60 flex items-center justify-between text-xs font-mono text-slate-400 group-hover:text-emerald-400 transition">
+              <span>View Post on Instagram</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </a>
 
-        <!-- Post 6 -->
-        <div class="insta-crop-container">
-          <blockquote class="instagram-media" 
-            data-instgrm-permalink="https://www.instagram.com/p/DAXl2KQyxbw/" 
-            data-instgrm-version="14">
-            <a href="https://www.instagram.com/p/DAXl2KQyxbw/" target="_blank"></a>
-          </blockquote>
-        </div>
+        <!-- Post 6: DAXl2KQyxbw -->
+        <a href="https://www.instagram.com/p/DAXl2KQyxbw/?xtok=OXZ6eHl5M25xb3Fu" target="_blank" class="group rounded-2xl bg-surface-card border border-surface-border hover:border-pink-500/50 transition overflow-hidden flex flex-col shadow-lg">
+          <div class="h-52 bg-[#0c0d14] relative flex items-center justify-center p-6 border-b border-surface-border/50">
+            <svg class="w-24 h-24 text-cyan-400/90 group-hover:scale-110 transition duration-300" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+              <path d="M15 50 Q 50 15 85 50 T 155 50" stroke-width="1.5"/>
+              <circle cx="50" cy="50" r="30" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <circle cx="50" cy="50" r="6" fill="rgba(6,182,212,0.3)"/>
+            </svg>
+            <span class="absolute top-3 right-3 px-2 py-0.5 rounded text-[10px] font-mono bg-black/70 text-pink-400 border border-pink-500/20">@couch_artato</span>
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="text-[11px] font-mono text-slate-400">Wave Dynamics</div>
+              <h4 class="text-sm font-semibold text-white mt-1 group-hover:text-cyan-300 transition">Harmonic Frequency</h4>
+            </div>
+            <div class="mt-4 pt-2.5 border-t border-surface-border/60 flex items-center justify-between text-xs font-mono text-slate-400 group-hover:text-emerald-400 transition">
+              <span>View Post on Instagram</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </a>
 
       </div>
 
@@ -411,6 +469,7 @@
       <div class="flex items-center gap-4">
         <a href="https://github.com/Srinivasan1008" target="_blank" class="hover:text-slate-300 transition">GitHub</a>
         <a href="https://www.instagram.com/couch_artato?obrf=MTl0a2FwcnhuZHJ5ag==" target="_blank" class="hover:text-slate-300 transition">Instagram</a>
+        <a href="https://www.linkedin.com/in/srinivasan-v-9a08157a?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="hover:text-slate-300 transition">LinkedIn</a>
         <a href="#hero" class="hover:text-emerald-400 transition">Back to Top ↑</a>
       </div>
     </footer>
@@ -430,30 +489,33 @@
     </div>
   </div>
 
-  <!-- Official Instagram Embed Script -->
-  <script async src="//www.instagram.com/embed.js"></script>
-
   <script>
-    /* 1. AVATAR & IMAGE HANDLING */
-    function handleAvatarFallback(img) {
+    /* ==========================================================================
+       1. AVATAR LOADING & PERSISTENCE
+       ========================================================================== */
+    function handleAvatarError(img) {
+      // 1. Try saved localStorage cached image
       const cached = localStorage.getItem('user_portfolio_avatar');
       if (cached && img.src !== cached) {
         img.src = cached;
         return;
       }
       
-      if (!img.getAttribute('data-tried-repo')) {
-        img.setAttribute('data-tried-repo', 'true');
+      // 2. Try explicit relative path for GitHub Pages
+      if (!img.getAttribute('data-tried-rel')) {
+        img.setAttribute('data-tried-rel', 'true');
         img.src = './16251.jpg';
         return;
       }
 
+      // 3. Fallback to raw githubusercontent direct branch
       if (!img.getAttribute('data-tried-raw')) {
         img.setAttribute('data-tried-raw', 'true');
         img.src = 'https://raw.githubusercontent.com/Srinivasan1008/Interactive_Portfolio/main/16251.jpg';
         return;
       }
 
+      // If all fail, display monogram fallback
       img.classList.add('hidden');
       document.getElementById('monogram-fallback').classList.remove('hidden');
     }
@@ -479,6 +541,8 @@
       if (savedAvatar) {
         const img = document.getElementById('profile-img');
         img.src = savedAvatar;
+        img.classList.remove('hidden');
+        document.getElementById('monogram-fallback').classList.add('hidden');
       }
       renderLeaderboard();
       initCanvas();
@@ -492,7 +556,9 @@
       setTimeout(() => btn.innerHTML = orig, 2000);
     }
 
-    /* 2. TOP 3 PODIUM & LOCALSTORAGE */
+    /* ==========================================================================
+       2. TOP 3 PODIUM & LOCALSTORAGE
+       ========================================================================== */
     const DEFAULT_LEADERBOARD = [
       { tag: "SVI", score: 48 },
       { tag: "APX", score: 32 },
@@ -532,7 +598,9 @@
       document.getElementById('bestScore').innerText = String(best).padStart(2, '0');
     }
 
-    /* 3. BINARY ORBIT GAME ENGINE */
+    /* ==========================================================================
+       3. BINARY ORBIT GAME ENGINE
+       ========================================================================== */
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
     
@@ -579,8 +647,7 @@
       try {
         if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         if (audioCtx.state === 'suspended') audioCtx.resume();
-        const osc = audioCtx.createGain ? audioCtx.createOscillator() : null;
-        if (!osc) return;
+        const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         osc.type = type;
         osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
