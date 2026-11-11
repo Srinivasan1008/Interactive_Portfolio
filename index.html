@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Srinivasan Venkatesan | Senior Full Stack Developer & Artist</title>
+  <title>Srinivasan Venkatesan | Senior Full Stack Developer &amp; Artist</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -24,7 +24,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
   <style>
     body { background-color: #08090d; color: #e2e8f0; -webkit-font-smoothing: antialiased; }
     .grid-bg {
@@ -99,7 +99,7 @@
         <a href="https://www.instagram.com/couch_artato?obrf=MTl0a2FwcnhuZHJ5ag==" target="_blank" class="px-3 py-2 rounded-lg bg-surface-card border border-surface-border hover:border-pink-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5">
           <span>📸</span> @couch_artato
         </a>
-        <a href="https://www.linkedin.com/in/srinivasan-v-9a08157a?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="px-3 py-2 rounded-lg bg-surface-card border border-surface-border hover:border-blue-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+        <a href="https://www.linkedin.com/in/srinivasan-v-9a08157a?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" target="_blank" class="px-3 py-2 rounded-lg bg-surface-card border border-surface-border hover:border-blue-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5">
           <span>💼</span> LinkedIn
         </a>
         <button onclick="sharePortfolio()" class="px-3 py-2 rounded-lg bg-surface-card border border-surface-border hover:border-emerald-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5">
@@ -224,7 +224,7 @@
             <span class="font-mono text-xs text-slate-400">07/2022 – 09/2025</span>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed mb-2.5">
-            Engineered the Test Script Generator UI & iAssist integration, scaling test case adoption to 85% and defect creation to 39%. Delivered the Order Journey Dashboard (OJD) with hierarchical node-tree visualizations.
+            Engineered the Test Script Generator UI &amp; iAssist integration, scaling test case adoption to 85% and defect creation to 39%. Delivered the Order Journey Dashboard (OJD) with hierarchical node-tree visualizations.
           </p>
           <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-slate-400">
             <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">Hierarchical Node Tree</span>
@@ -248,11 +248,11 @@
       </div>
     </section>
 
-    <!-- SECTION: AWARDS & EDUCATION -->
+    <!-- SECTION: AWARDS &amp; EDUCATION -->
     <section class="space-y-4">
       <div class="border-b border-surface-border pb-3">
-        <span class="text-xs font-mono text-emerald-400"># RECOGNITION & BACKGROUND</span>
-        <h2 class="text-xl font-bold text-white mt-0.5">Honors & Education</h2>
+        <span class="text-xs font-mono text-emerald-400"># RECOGNITION &amp; BACKGROUND</span>
+        <h2 class="text-xl font-bold text-white mt-0.5">Honors &amp; Education</h2>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -411,7 +411,7 @@
       if (navigator.share) {
         navigator.share({
           title: 'Srinivasan Venkatesan | Portfolio',
-          text: 'Interactive developer & digital art portfolio of Srinivasan Venkatesan.',
+          text: 'Interactive developer &amp; digital art portfolio of Srinivasan Venkatesan.',
           url: window.location.href
         }).catch(() => {});
       } else { copyEmail(); }
@@ -530,4 +530,146 @@
       for (let i = 0; i < count; i++) {
         particles.push({
           x, y, vx: (Math.random() - 0.5) * 5, vy: (Math.random() - 0.5) * 5,
-          life: 1, decay: 0.04 + Math.random() * 
+          life: 1, decay: 0.04 + Math.random() * 0.03, color
+        });
+      }
+    }
+
+    function startGame() {
+      document.getElementById('gameOverlay').classList.add('hidden');
+      document.getElementById('recordModal').classList.add('hidden');
+      score = 0; speed = 4.2; obstacles = []; particles = []; spawnTimer = 0;
+      document.getElementById('currentScore').innerText = '00';
+      const h = canvas.height / window.devicePixelRatio;
+      player.rail = 'bottom'; player.currentY = h - railMargin; player.targetY = h - railMargin;
+      isPlaying = true; playBeep(520, 'sine', 0.12); loop();
+    }
+
+    function gameOver() {
+      isPlaying = false;
+      cancelAnimationFrame(animId);
+      triggerHaptic([30, 40, 30]);
+      playBeep(140, 'sawtooth', 0.25);
+      createBurst(player.x, player.currentY, '#ef4444', 18);
+      const board = getLeaderboard();
+      const qualifies = board.length < 3 || score > board[board.length - 1].score;
+      if (qualifies && score > 0) {
+        document.getElementById('modalFinalScore').innerText = score;
+        document.getElementById('recordModal').classList.remove('hidden');
+        document.getElementById('playerInitials').value = '';
+        setTimeout(() => document.getElementById('playerInitials').focus(), 100);
+      } else {
+        document.getElementById('overlayTitle').innerText = "Run Terminated";
+        document.getElementById('overlaySub').innerText = `You scored ${score} pts. Practice your rail switch timing.`;
+        document.getElementById('gameOverlay').classList.remove('hidden');
+      }
+    }
+
+    function submitLeaderboardEntry() {
+      const input = document.getElementById('playerInitials');
+      const tag = (input.value.trim().toUpperCase() || 'RUN').slice(0, 3);
+      const board = getLeaderboard();
+      board.push({ tag, score });
+      board.sort((a, b) => b.score - a.score);
+      saveLeaderboard(board);
+      document.getElementById('recordModal').classList.add('hidden');
+      document.getElementById('overlayTitle').innerText = "Record Logged";
+      document.getElementById('overlaySub').innerText = `${tag} placed on the Top 3 podium with ${score} pts!`;
+      document.getElementById('gameOverlay').classList.remove('hidden');
+    }
+
+    function loop() { if (!isPlaying) return; update(); render(); animId = requestAnimationFrame(loop); }
+
+    function update() {
+      const w = canvas.width / window.devicePixelRatio;
+      const h = canvas.height / window.devicePixelRatio;
+      player.currentY += (player.targetY - player.currentY) * player.speed;
+
+      spawnTimer++;
+      if (spawnTimer > Math.max(38, 75 - Math.floor(score / 3))) {
+        spawnTimer = 0;
+        const rail = Math.random() > 0.5 ? 'top' : 'bottom';
+        const isBonus = Math.random() > 0.75;
+        obstacles.push({
+          x: w + 20, y: rail === 'top' ? railMargin : h - railMargin,
+          rail, isBonus, radius: isBonus ? 5 : 8, passed: false
+        });
+      }
+
+      for (let i = obstacles.length - 1; i >= 0; i--) {
+        const obs = obstacles[i];
+        obs.x -= speed;
+        const dx = obs.x - player.x, dy = obs.y - player.currentY;
+        if (Math.hypot(dx, dy) < player.radius + obs.radius + 2) {
+          if (obs.isBonus) {
+            score += 3; triggerHaptic(20); playBeep(780, 'sine', 0.08);
+            createBurst(obs.x, obs.y, '#38bdf8', 8);
+            obstacles.splice(i, 1);
+            document.getElementById('currentScore').innerText = String(score).padStart(2, '0');
+            continue;
+          } else { gameOver(); return; }
+        }
+        if (!obs.passed && obs.x < player.x) {
+          obs.passed = true;
+          if (!obs.isBonus) {
+            score += 1;
+            document.getElementById('currentScore').innerText = String(score).padStart(2, '0');
+            speed += 0.04;
+          }
+        }
+        if (obs.x < -20) obstacles.splice(i, 1);
+      }
+
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx; p.y += p.vy; p.life -= p.decay;
+        if (p.life <= 0) particles.splice(i, 1);
+      }
+    }
+
+    function render() {
+      const w = canvas.width / window.devicePixelRatio;
+      const h = canvas.height / window.devicePixelRatio;
+      ctx.clearRect(0, 0, w, h);
+
+      ctx.strokeStyle = '#1e2333'; ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(0, railMargin); ctx.lineTo(w, railMargin);
+      ctx.moveTo(0, h - railMargin); ctx.lineTo(w, h - railMargin);
+      ctx.stroke();
+
+      ctx.fillStyle = 'rgba(16, 185, 129, 0.2)';
+      ctx.beginPath();
+      ctx.arc(player.x - 8, player.currentY, player.radius * 0.7, 0, Math.PI * 2);
+      ctx.fill();
+
+      particles.forEach(p => {
+        ctx.fillStyle = p.color; ctx.globalAlpha = p.life;
+        ctx.beginPath(); ctx.arc(p.x, p.y, 2, 0, Math.PI * 2); ctx.fill();
+        ctx.globalAlpha = 1;
+      });
+
+      ctx.fillStyle = '#10b981';
+      ctx.beginPath(); ctx.arc(player.x, player.currentY, player.radius, 0, Math.PI * 2); ctx.fill();
+
+      obstacles.forEach(obs => {
+        ctx.fillStyle = obs.isBonus ? '#38bdf8' : '#f43f5e';
+        ctx.beginPath(); ctx.arc(obs.x, obs.y, obs.radius, 0, Math.PI * 2); ctx.fill();
+      });
+    }
+
+    function drawPreview() {
+      const w = canvas.width / window.devicePixelRatio;
+      const h = canvas.height / window.devicePixelRatio;
+      ctx.clearRect(0, 0, w, h);
+      ctx.strokeStyle = '#1a1e2b'; ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(0, railMargin); ctx.lineTo(w, railMargin);
+      ctx.moveTo(0, h - railMargin); ctx.lineTo(w, h - railMargin);
+      ctx.stroke();
+      ctx.fillStyle = '#10b981';
+      ctx.beginPath(); ctx.arc(player.x, h - railMargin, player.radius, 0, Math.PI * 2); ctx.fill();
+    }
+  </script>
+</body>
+</html>
