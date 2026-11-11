@@ -78,12 +78,13 @@
     .pure-art-frame iframe,
     .pure-art-frame .instagram-media {
       position: absolute !important;
-      top: -54px !important;
+      top: -54px !important; /* Crops off "couch_artato View profile" header */
       left: 0 !important;
       width: 100% !important;
       min-width: 100% !important;
       border: none !important;
     }
+    /* Scroll-safe tap overlay */
     .art-click-overlay {
       position: absolute;
       inset: 0;
@@ -113,20 +114,23 @@
   <main class="max-w-5xl mx-auto px-4 py-8 space-y-16">
 
     <!-- HERO SECTION -->
-    <section id="hero" class="space-y-6 pt-2 scroll-mt-16">
+    <section id="hero" class="space-y-6 pt-2">
       <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
         
-        <!-- Profile Picture Box (Inlined Data URI: 100% Bulletproof) -->
-        <div class="relative group">
+        <!-- Profile Picture Box (Inlined Data URI: Zero Network Dependency) -->
+        <div class="relative group cursor-pointer" onclick="document.getElementById('avatar-input').click()" title="Tap to select picture directly from phone">
           <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-surface-card border border-surface-border overflow-hidden flex items-center justify-center shadow-lg transition-transform group-hover:scale-[1.02]">
             <img 
               id="profile-img" 
-              src="data:image/jpeg;base64,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" 
+              src="https://cdn.jsdelivr.net/gh/Srinivasan1008/Interactive_Portfolio@main/16251.jpg"
               alt="Srinivasan Venkatesan" 
               class="w-full h-full object-cover object-top" 
+              onerror="handleAvatarError(this)" 
             />
+            <div id="monogram-fallback" class="hidden font-mono font-bold text-2xl text-slate-400">SV</div>
           </div>
           <span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-[#08090d]" title="Active"></span>
+          <input type="file" id="avatar-input" accept="image/*" class="hidden" onchange="handleManualAvatarUpload(event)" />
         </div>
 
         <div class="space-y-2">
@@ -174,4 +178,712 @@
         </div>
         <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border">
           <div class="text-[11px] font-mono text-slate-400">AWARDS</div>
-          <div class="text-xl font-bold text-white mt-1">11 Honors
+          <div class="text-xl font-bold text-white mt-1">11 Honors</div>
+        </div>
+        <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border">
+          <div class="text-[11px] font-mono text-slate-400">DEV VELOCITY</div>
+          <div class="text-xl font-bold text-emerald-400 mt-1">+30% AI</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: ARCADE GAME & LEADERBOARD (CLEAN ORIGINAL + 15MS HAPTIC) -->
+    <section id="game" class="space-y-4">
+      <div class="flex items-end justify-between border-b border-surface-border pb-3">
+        <div>
+          <span class="text-xs font-mono text-emerald-400"># MINIMALIST ARCADE</span>
+          <h2 class="text-xl font-bold text-white mt-0.5">Binary Orbit</h2>
+        </div>
+        <div class="text-right">
+          <span class="text-[11px] font-mono text-slate-400">CONTROLS:</span>
+          <span class="text-xs font-mono text-slate-300 block">Tap Screen or Spacebar</span>
+        </div>
+      </div>
+
+      <!-- Game Stage -->
+      <div class="relative w-full rounded-2xl bg-[#050608] border border-surface-border overflow-hidden select-none">
+        <canvas id="gameCanvas" class="w-full h-56 sm:h-64 block cursor-pointer"></canvas>
+
+        <!-- Overlay Screen (Start / Game Over) -->
+        <div id="gameOverlay" class="absolute inset-0 bg-[#08090d]/90 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center z-10">
+          <span id="overlayPill" class="text-[11px] font-mono uppercase px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 mb-2">
+            One-Tap Gravity Flip
+          </span>
+          <h3 id="overlayTitle" class="text-2xl font-bold text-white mb-1">Binary Orbit</h3>
+          <p id="overlaySub" class="text-xs text-slate-400 max-w-xs mb-4">
+            Tap or Spacebar to switch rails. Dodge hazards and grab pulses.
+          </p>
+          <div class="flex items-center gap-3">
+            <button onclick="startGame()" class="px-5 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs tracking-wider transition">
+              START RUN
+            </button>
+            <button onclick="toggleMute()" id="muteBtn" class="px-3 py-2.5 rounded-lg bg-surface-card border border-surface-border text-xs text-slate-300 hover:text-white transition">
+              🔊 Sound On
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Clean Score Bar & Top 3 Podium -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border flex items-center justify-between font-mono">
+          <div>
+            <div class="text-[10px] text-slate-400">CURRENT RUN</div>
+            <div id="currentScore" class="text-2xl font-bold text-white">00</div>
+          </div>
+          <div class="text-right">
+            <div class="text-[10px] text-slate-400">PERSONAL BEST</div>
+            <div id="bestScore" class="text-2xl font-bold text-emerald-400">00</div>
+          </div>
+        </div>
+
+        <div class="md:col-span-2 p-3.5 rounded-xl bg-surface-card border border-surface-border flex flex-col justify-between">
+          <div class="flex items-center justify-between text-xs font-mono text-slate-400 border-b border-surface-border/60 pb-1.5 mb-2">
+            <span class="flex items-center gap-1.5 text-slate-300 font-semibold">
+              <span>🏆</span> TOP 3 LEADERBOARD
+            </span>
+            <button onclick="resetLeaderboard()" class="text-[10px] text-slate-500 hover:text-red-400 transition">Reset</button>
+          </div>
+          <div id="leaderboardList" class="grid grid-cols-3 gap-2 font-mono text-xs"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: PROFESSIONAL EXPERIENCE -->
+    <section id="experience" class="space-y-4">
+      <div class="border-b border-surface-border pb-3">
+        <span class="text-xs font-mono text-emerald-400"># CAREER MILESTONES</span>
+        <h2 class="text-xl font-bold text-white mt-0.5">Enterprise Engineering</h2>
+      </div>
+
+      <div class="space-y-3">
+        <!-- Role 1 -->
+        <div class="p-4 rounded-xl bg-surface-card border border-surface-border hover:border-surface-subtle transition">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-semibold text-white">Verizon</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Engineer III Spec</span>
+            </div>
+            <span class="font-mono text-xs text-slate-400">09/2025 – Present</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed mb-2.5">
+            Leading UI/UX architecture for the APEX enterprise platform, driving 85% corporate tool adoption[span_8](start_span)[span_8](end_span). Built the automated Regression Execution Agent (React TS) and authored GENTAAS decoupled migration systems[span_9](start_span)[span_9](end_span).
+          </p>
+          <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-slate-400">
+            <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">React TS</span>
+            <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">Claude AI Skills</span>
+            <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">GitHub Copilot</span>
+            <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">APEX Platform</span>
+          </div>
+        </div>
+
+        <!-- Role 2 -->
+        <div class="p-4 rounded-xl bg-surface-card border border-surface-border hover:border-surface-subtle transition">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-semibold text-white">Verizon</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300">Engineer II</span>
+            </div>
+            <span class="font-mono text-xs text-slate-400">07/2022 – 09/2025</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed mb-2.5">
+            Engineered the Test Script Generator UI & iAssist integration, scaling test case adoption to 85% and defect creation to 39%[span_10](start_span)[span_10](end_span). Delivered the Order Journey Dashboard (OJD) with hierarchical node-tree visualizations[span_11](start_span)[span_11](end_span).
+          </p>
+          <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-slate-400">
+            <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">Hierarchical Visualizations</span>
+            <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">RCA Diff Tool</span>
+            <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">iAssist</span>
+          </div>
+        </div>
+
+        <!-- Role 3 -->
+        <div class="p-4 rounded-xl bg-surface-card border border-surface-border hover:border-surface-subtle transition">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-semibold text-white">Verizon</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300">Engineer I</span>
+            </div>
+            <span class="font-mono text-xs text-slate-400">08/2020 – 07/2022</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Built the initial TAAS/GENTAAS dashboard from scratch with React and Node.js APIs backed by MySQL[span_12](start_span)[span_12](end_span). Automated operational metric tracking in the Magic platform[span_13](start_span)[span_13](end_span).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: AWARDS & EDUCATION -->
+    <section class="space-y-4">
+      <div class="border-b border-surface-border pb-3">
+        <span class="text-xs font-mono text-emerald-400"># RECOGNITION & BACKGROUND</span>
+        <h2 class="text-xl font-bold text-white mt-0.5">Honors & Education</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
+          <div class="font-mono text-emerald-400 text-lg font-bold">7× Spotlight Awards</div>
+          <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+            Honored for sustained excellence in UI architectural development across GENTAAS, OJD, and TAAS platforms[span_14](start_span)[span_14](end_span).
+          </p>
+        </div>
+        <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
+          <div class="font-mono text-white text-lg font-bold">4× Simple Thanks</div>
+          <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+            Awarded for extra effort in building successful PDF compare tools and self-healing automation[span_15](start_span)[span_15](end_span).
+          </p>
+        </div>
+        <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
+          <div class="font-mono text-pink-400 text-lg font-bold">SASTRA University</div>
+          <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+            Bachelor of Information Technology (2020)[span_16](start_span)[span_16](end_span). Digital art featured in VCG Times and VCG Canvas[span_17](start_span)[span_17](end_span).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: DIGITAL ART STUDIO (PURE ARTWORK CROP - NO HEADER / NO FOOTER) -->
+    <section id="art" class="space-y-6">
+      <div class="flex items-end justify-between border-b border-surface-border pb-3">
+        <div>
+          <span class="text-xs font-mono text-emerald-400"># DIGITAL ARTWORKS</span>
+          <h2 class="text-xl font-bold text-white mt-0.5">The Sketchbook Lab</h2>
+        </div>
+        <a href="https://www.instagram.com/couch_artato?obrf=MTl0a2FwcnhuZHJ5ag==" target="_blank" class="text-xs font-mono text-pink-400 hover:text-pink-300 transition flex items-center gap-1">
+          <span>@couch_artato</span> ↗
+        </a>
+      </div>
+
+      <p class="text-xs text-slate-400">
+        Illustrations and sketchbook concepts. Cropped cleanly to isolate the artwork. Tap any piece to view the full resolution post on Instagram.
+      </p>
+
+      <!-- 6 Cropped Art Cards with Scroll-Safe Tap Layer -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Post 1: DbjHAcvTefp -->
+        <div class="pure-art-frame group">
+          <a href="https://www.instagram.com/p/DbjHAcvTefp/?vrfl=MWpzM3B3dnE3c2V2Mw==" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
+          <blockquote class="instagram-media" 
+            data-instgrm-permalink="https://www.instagram.com/p/DbjHAcvTefp/" 
+            data-instgrm-version="14">
+          </blockquote>
+        </div>
+
+        <!-- Post 2: DNalgacz1RZ -->
+        <div class="pure-art-frame group">
+          <a href="https://www.instagram.com/p/DNalgacz1RZ/?dlrf=MWpqam1pdTIwcGE2eQ==" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
+          <blockquote class="instagram-media" 
+            data-instgrm-permalink="https://www.instagram.com/p/DNalgacz1RZ/" 
+            data-instgrm-version="14">
+          </blockquote>
+        </div>
+
+        <!-- Post 3: DGALgnhIdMB -->
+        <div class="pure-art-frame group">
+          <a href="https://www.instagram.com/p/DGALgnhIdMB/?vrfl=MW5waW5odTNja3U1Mg==" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
+          <blockquote class="instagram-media" 
+            data-instgrm-permalink="https://www.instagram.com/p/DGALgnhIdMB/" 
+            data-instgrm-version="14">
+          </blockquote>
+        </div>
+
+        <!-- Post 4: DAvv0esTr0O -->
+        <div class="pure-art-frame group">
+          <a href="https://www.instagram.com/p/DAvv0esTr0O/?xtok=eTg1aTNlYWhqc25y" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
+          <blockquote class="instagram-media" 
+            data-instgrm-permalink="https://www.instagram.com/p/DAvv0esTr0O/" 
+            data-instgrm-version="14">
+          </blockquote>
+        </div>
+
+        <!-- Post 5: DCFenEpTmil -->
+        <div class="pure-art-frame group">
+          <a href="https://www.instagram.com/p/DCFenEpTmil/?obrf=MXR2NjFhMzh2ODNnaA==" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
+          <blockquote class="instagram-media" 
+            data-instgrm-permalink="https://www.instagram.com/p/DCFenEpTmil/" 
+            data-instgrm-version="14">
+          </blockquote>
+        </div>
+
+        <!-- Post 6: DAXl2KQyxbw -->
+        <div class="pure-art-frame group">
+          <a href="https://www.instagram.com/p/DAXl2KQyxbw/?xtok=OXZ6eHl5M25xb3Fu" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
+          <blockquote class="instagram-media" 
+            data-instgrm-permalink="https://www.instagram.com/p/DAXl2KQyxbw/" 
+            data-instgrm-version="14">
+          </blockquote>
+        </div>
+
+      </div>
+
+      <!-- Follow Banner -->
+      <div class="p-4 rounded-xl bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-transparent border border-pink-500/20 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-xs">
+        <span class="text-slate-300">Discover all sketchbook series, character design concepts, and digital art drops:</span>
+        <a href="https://www.instagram.com/couch_artato?obrf=MTl0a2FwcnhuZHJ5ag==" target="_blank" class="px-4 py-2 rounded-lg bg-pink-500/20 hover:bg-pink-500/30 text-pink-300 border border-pink-500/30 transition whitespace-nowrap">
+          Follow @couch_artato ↗
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="pt-8 pb-12 border-t border-surface-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
+      <div>
+        © 2026 Srinivasan Venkatesan. Built 100% on Mobile.
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/Srinivasan1008" target="_blank" class="hover:text-slate-300 transition">GitHub</a>
+        <a href="https://www.instagram.com/couch_artato?obrf=MTl0a2FwcnhuZHJ5ag==" target="_blank" class="hover:text-slate-300 transition">Instagram</a>
+        <a href="https://www.linkedin.com/in/srinivasan-v-9a08157a?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="hover:text-slate-300 transition">LinkedIn</a>
+        <a href="#hero" class="hover:text-emerald-400 transition">Back to Top ↑</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- GAME OVER / RECORD SUBMISSION MODAL -->
+  <div id="recordModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="w-full max-w-xs p-5 rounded-xl bg-surface-card border border-emerald-500/40 text-center font-mono">
+      <div class="text-emerald-400 text-sm font-bold mb-1">🎉 TOP 3 FINISH!</div>
+      <div class="text-xs text-slate-300 mb-3">You ranked among the top runners.</div>
+      <div class="text-2xl font-bold text-white mb-4" id="modalFinalScore">00</div>
+      <input type="text" id="playerInitials" maxlength="3" placeholder="YOUR INITIALS" class="w-full text-center tracking-widest uppercase bg-[#0b0c10] border border-surface-border rounded-lg px-3 py-2 text-white text-sm mb-3 focus:outline-none focus:border-emerald-500" />
+      <button onclick="submitLeaderboardEntry()" class="w-full py-2 rounded-lg bg-emerald-500 text-black font-semibold text-xs hover:bg-emerald-400 transition">
+        SAVE RECORD
+      </button>
+    </div>
+  </div>
+
+  <!-- Official Instagram Embed Script -->
+  <script async src="//www.instagram.com/embed.js"></script>
+
+  <script>
+    /* 1. FAILSAFE AVATAR RESOLVER */
+    function handleAvatarError(img) {
+      const cached = localStorage.getItem('user_portfolio_avatar');
+      if (cached && img.src !== cached) {
+        img.src = cached;
+        return;
+      }
+      if (!img.getAttribute('data-tried-rel')) {
+        img.setAttribute('data-tried-rel', 'true');
+        img.src = './16251.jpg';
+        return;
+      }
+      if (!img.getAttribute('data-tried-raw')) {
+        img.setAttribute('data-tried-raw', 'true');
+        img.src = 'https://raw.githubusercontent.com/Srinivasan1008/Interactive_Portfolio/main/16251.jpg';
+        return;
+      }
+      img.classList.add('hidden');
+      document.getElementById('monogram-fallback').classList.remove('hidden');
+    }
+
+    function handleManualAvatarUpload(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const base64Data = e.target.result;
+          const img = document.getElementById('profile-img');
+          img.src = base64Data;
+          img.classList.remove('hidden');
+          document.getElementById('monogram-fallback').classList.add('hidden');
+          localStorage.setItem('user_portfolio_avatar', base64Data);
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedAvatar = localStorage.getItem('user_portfolio_avatar');
+      if (savedAvatar) {
+        const img = document.getElementById('profile-img');
+        img.src = savedAvatar;
+        img.classList.remove('hidden');
+        document.getElementById('monogram-fallback').classList.add('hidden');
+      }
+      renderLeaderboard();
+      initCanvas();
+    });
+
+    function sharePortfolio() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Srinivasan Venkatesan | Portfolio',
+          text: 'Check out the interactive developer & digital art portfolio of Srinivasan Venkatesan.',
+          url: window.location.href
+        }).catch(() => {});
+      } else {
+        copyEmail();
+      }
+    }
+
+    function copyEmail() {
+      navigator.clipboard.writeText('Nivas65536@gmail.com');
+      const btn = document.getElementById('copy-email-btn');
+      const orig = btn.innerHTML;
+      btn.innerHTML = '<span>✓</span> Copied!';
+      setTimeout(() => btn.innerHTML = orig, 2000);
+    }
+
+    /* 2. LEADERBOARD */
+    const DEFAULT_LEADERBOARD = [
+      { tag: "SVI", score: 48 },
+      { tag: "APX", score: 32 },
+      { tag: "GEN", score: 18 }
+    ];
+
+    function getLeaderboard() {
+      const saved = localStorage.getItem('arcade_top3');
+      return saved ? JSON.parse(saved) : DEFAULT_LEADERBOARD;
+    }
+
+    function saveLeaderboard(board) {
+      localStorage.setItem('arcade_top3', JSON.stringify(board.slice(0, 3)));
+      renderLeaderboard();
+    }
+
+    function resetLeaderboard() {
+      if (confirm("Reset the arcade leaderboard back to default?")) {
+        localStorage.removeItem('arcade_top3');
+        renderLeaderboard();
+      }
+    }
+
+    function renderLeaderboard() {
+      const board = getLeaderboard();
+      const listEl = document.getElementById('leaderboardList');
+      const badges = ['🥇', '🥈', '🥉'];
+      
+      listEl.innerHTML = board.map((item, idx) => `
+        <div class="p-2 rounded bg-[#0a0b10] border border-surface-border text-center">
+          <div class="text-[10px] text-slate-500">${badges[idx]} ${item.tag}</div>
+          <div class="text-sm font-bold text-white mt-0.5">${item.score}</div>
+        </div>
+      `).join('');
+
+      const best = Math.max(...board.map(b => b.score), 0);
+      document.getElementById('bestScore').innerText = String(best).padStart(2, '0');
+    }
+
+    /* 3. CLEAN ORIGINAL ARCADE WITH 15MS HAPTIC FEEDBACK */
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    let isPlaying = false;
+    let score = 0;
+    let soundEnabled = true;
+    let animId = null;
+
+    let player = {
+      x: 60,
+      y: 0,
+      radius: 7,
+      rail: 'bottom',
+      targetY: 0,
+      currentY: 0,
+      speed: 0.28
+    };
+
+    let obstacles = [];
+    let particles = [];
+    let speed = 4.2;
+    let spawnTimer = 0;
+    let railMargin = 38;
+
+    function initCanvas() {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * window.devicePixelRatio;
+      canvas.height = rect.height * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      
+      const h = canvas.height / window.devicePixelRatio;
+      player.currentY = h - railMargin;
+      player.targetY = h - railMargin;
+      drawPreview();
+    }
+
+    window.addEventListener('resize', () => {
+      if (!isPlaying) initCanvas();
+    });
+
+    let audioCtx = null;
+    function playBeep(freq, type = 'sine', duration = 0.08) {
+      if (!soundEnabled) return;
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createGain ? audioCtx.createOscillator() : null;
+        if (!osc) return;
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    function toggleMute() {
+      soundEnabled = !soundEnabled;
+      document.getElementById('muteBtn').innerText = soundEnabled ? '🔊 Sound On' : '🔇 Muted';
+    }
+
+    function triggerHaptic(duration = 15) {
+      if ('vibrate' in navigator) {
+        try { navigator.vibrate(duration); } catch(e) {}
+      }
+    }
+
+    function switchRail() {
+      if (!isPlaying) return;
+      const h = canvas.height / window.devicePixelRatio;
+      triggerHaptic(15);
+      if (player.rail === 'bottom') {
+        player.rail = 'top';
+        player.targetY = railMargin;
+        playBeep(440, 'square', 0.05);
+      } else {
+        player.rail = 'bottom';
+        player.targetY = h - railMargin;
+        playBeep(330, 'square', 0.05);
+      }
+      createBurst(player.x, player.currentY, '#10b981', 6);
+    }
+
+    canvas.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      if (isPlaying) switchRail();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'Space') {
+        if (isPlaying) {
+          e.preventDefault();
+          switchRail();
+        }
+      }
+    });
+
+    function createBurst(x, y, color, count = 8) {
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x, y,
+          vx: (Math.random() - 0.5) * 5,
+          vy: (Math.random() - 0.5) * 5,
+          life: 1,
+          decay: 0.04 + Math.random() * 0.03,
+          color
+        });
+      }
+    }
+
+    function startGame() {
+      document.getElementById('gameOverlay').classList.add('hidden');
+      document.getElementById('recordModal').classList.add('hidden');
+      score = 0;
+      speed = 4.2;
+      obstacles = [];
+      particles = [];
+      spawnTimer = 0;
+      document.getElementById('currentScore').innerText = '00';
+      
+      const h = canvas.height / window.devicePixelRatio;
+      player.rail = 'bottom';
+      player.currentY = h - railMargin;
+      player.targetY = h - railMargin;
+      
+      isPlaying = true;
+      playBeep(520, 'sine', 0.12);
+      loop();
+    }
+
+    function gameOver() {
+      isPlaying = false;
+      cancelAnimationFrame(animId);
+      triggerHaptic([30, 40, 30]);
+      playBeep(140, 'sawtooth', 0.25);
+      createBurst(player.x, player.currentY, '#ef4444', 18);
+
+      const board = getLeaderboard();
+      const qualifies = board.length < 3 || score > board[board.length - 1].score;
+
+      if (qualifies && score > 0) {
+        document.getElementById('modalFinalScore').innerText = score;
+        document.getElementById('recordModal').classList.remove('hidden');
+        document.getElementById('playerInitials').value = '';
+        setTimeout(() => document.getElementById('playerInitials').focus(), 100);
+      } else {
+        document.getElementById('overlayTitle').innerText = "Run Terminated";
+        document.getElementById('overlaySub').innerText = `You scored ${score} pts. Practice your rail switch timing.`;
+        document.getElementById('overlayPill').innerText = `Score: ${score}`;
+        document.getElementById('gameOverlay').classList.remove('hidden');
+      }
+    }
+
+    function submitLeaderboardEntry() {
+      const input = document.getElementById('playerInitials');
+      const tag = (input.value.trim().toUpperCase() || 'RUN').slice(0, 3);
+      const board = getLeaderboard();
+      board.push({ tag, score });
+      board.sort((a, b) => b.score - a.score);
+      saveLeaderboard(board);
+
+      document.getElementById('recordModal').classList.add('hidden');
+      document.getElementById('overlayTitle').innerText = "Record Logged";
+      document.getElementById('overlaySub').innerText = `${tag} placed on the Top 3 podium with ${score} pts!`;
+      document.getElementById('overlayPill').innerText = `Score: ${score}`;
+      document.getElementById('gameOverlay').classList.remove('hidden');
+    }
+
+    function loop() {
+      if (!isPlaying) return;
+      update();
+      render();
+      animId = requestAnimationFrame(loop);
+    }
+
+    function update() {
+      const w = canvas.width / window.devicePixelRatio;
+      const h = canvas.height / window.devicePixelRatio;
+
+      player.currentY += (player.targetY - player.currentY) * player.speed;
+
+      spawnTimer++;
+      if (spawnTimer > Math.max(38, 75 - Math.floor(score / 3))) {
+        spawnTimer = 0;
+        const rail = Math.random() > 0.5 ? 'top' : 'bottom';
+        const isBonus = Math.random() > 0.75;
+        obstacles.push({
+          x: w + 20,
+          y: rail === 'top' ? railMargin : h - railMargin,
+          rail,
+          isBonus,
+          radius: isBonus ? 5 : 8,
+          passed: false
+        });
+      }
+
+      for (let i = obstacles.length - 1; i >= 0; i--) {
+        const obs = obstacles[i];
+        obs.x -= speed;
+
+        const dx = obs.x - player.x;
+        const dy = obs.y - player.currentY;
+        const dist = Math.hypot(dx, dy);
+
+        if (dist < player.radius + obs.radius + 2) {
+          if (obs.isBonus) {
+            score += 3;
+            triggerHaptic(20);
+            playBeep(780, 'sine', 0.08);
+            createBurst(obs.x, obs.y, '#38bdf8', 8);
+            obstacles.splice(i, 1);
+            document.getElementById('currentScore').innerText = String(score).padStart(2, '0');
+            continue;
+          } else {
+            gameOver();
+            return;
+          }
+        }
+
+        if (!obs.passed && obs.x < player.x) {
+          obs.passed = true;
+          if (!obs.isBonus) {
+            score += 1;
+            document.getElementById('currentScore').innerText = String(score).padStart(2, '0');
+            speed += 0.04;
+          }
+        }
+
+        if (obs.x < -20) obstacles.splice(i, 1);
+      }
+
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life -= p.decay;
+        if (p.life <= 0) particles.splice(i, 1);
+      }
+    }
+
+    function render() {
+      const w = canvas.width / window.devicePixelRatio;
+      const h = canvas.height / window.devicePixelRatio;
+
+      ctx.clearRect(0, 0, w, h);
+
+      // Rails
+      ctx.strokeStyle = '#1e2333';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(0, railMargin);
+      ctx.lineTo(w, railMargin);
+      ctx.moveTo(0, h - railMargin);
+      ctx.lineTo(w, h - railMargin);
+      ctx.stroke();
+
+      // Particle Trail
+      ctx.fillStyle = 'rgba(16, 185, 129, 0.2)';
+      ctx.beginPath();
+      ctx.arc(player.x - 8, player.currentY, player.radius * 0.7, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Particles
+      particles.forEach(p => {
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.life;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      });
+
+      // Player
+      ctx.fillStyle = '#10b981';
+      ctx.beginPath();
+      ctx.arc(player.x, player.currentY, player.radius, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Obstacles
+      obstacles.forEach(obs => {
+        if (obs.isBonus) {
+          ctx.fillStyle = '#38bdf8';
+          ctx.beginPath();
+          ctx.arc(obs.x, obs.y, obs.radius, 0, Math.PI * 2);
+          ctx.fill();
+        } else {
+          ctx.fillStyle = '#f43f5e';
+          ctx.beginPath();
+          ctx.arc(obs.x, obs.y, obs.radius, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      });
+    }
+
+    function drawPreview() {
+      const w = canvas.width / window.devicePixelRatio;
+      const h = canvas.height / window.devicePixelRatio;
+      ctx.clearRect(0, 0, w, h);
+
+      ctx.strokeStyle = '#1a1e2b';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(0, railMargin);
+      ctx.lineTo(w, railMargin);
+      ctx.moveTo(0, h - railMargin);
+      ctx.lineTo(w, h - railMargin);
+      ctx.stroke();
+
+      ctx.fillStyle = '#10b981';
+      ctx.beginPath();
+      ctx.arc(player.x, h - railMargin, player.radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  </script>
+</body>
+</html>
