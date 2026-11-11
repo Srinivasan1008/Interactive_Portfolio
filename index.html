@@ -4,8 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Srinivasan Venkatesan | Senior Full Stack Developer & Artist</title>
-
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -13,79 +11,38 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-            mono: ['JetBrains Mono', 'Menlo', 'Monaco', 'Courier New', 'monospace'],
+            sans: ['Inter', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'Menlo', 'monospace']
           },
           colors: {
-            surface: {
-              DEFAULT: '#090a0f',
-              card: '#111218',
-              cardHover: '#181a24',
-              border: '#1f2330',
-              subtle: '#2a3044'
-            },
-            accent: {
-              DEFAULT: '#10b981',
-              dim: 'rgba(16, 185, 129, 0.15)',
-              bright: '#34d399'
-            }
+            surface: { DEFAULT: '#090a0f', card: '#111218', border: '#1f2330' },
+            accent: { DEFAULT: '#10b981' }
           }
         }
       }
     }
   </script>
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    body {
-      background-color: #08090d;
-      color: #e2e8f0;
-      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-      -webkit-font-smoothing: antialiased;
-    }
-    ::selection {
-      background: #10b981;
-      color: #000;
-    }
+    body { background-color: #08090d; color: #e2e8f0; -webkit-font-smoothing: antialiased; }
     .grid-bg {
       background-size: 32px 32px;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-image: linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
     }
-    #gameCanvas {
-      touch-action: none;
-      -webkit-tap-highlight-color: transparent;
-    }
+    #gameCanvas { touch-action: none; -webkit-tap-highlight-color: transparent; }
     .pure-art-frame {
-      position: relative;
-      width: 100%;
-      height: 380px;
-      overflow: hidden;
-      border-radius: 16px;
-      background: #0d0e14;
-      border: 1px solid #1f2330;
+      position: relative; width: 100%; height: 380px; overflow: hidden;
+      border-radius: 16px; background: #0d0e14; border: 1px solid #1f2330;
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
     }
-    .pure-art-frame iframe,
-    .pure-art-frame .instagram-media {
-      position: absolute !important;
-      top: -54px !important;
-      left: 0 !important;
-      width: 100% !important;
-      min-width: 100% !important;
-      border: none !important;
+    .pure-art-frame iframe, .pure-art-frame .instagram-media {
+      position: absolute !important; top: -54px !important; left: 0 !important;
+      width: 100% !important; min-width: 100% !important; border: none !important;
     }
-    .art-click-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 20;
-      cursor: pointer;
-    }
+    .art-click-overlay { position: absolute; inset: 0; z-index: 20; cursor: pointer; }
   </style>
 </head>
 <body class="min-h-screen grid-bg font-sans antialiased selection:bg-emerald-500 selection:text-black">
@@ -111,16 +68,10 @@
     <!-- HERO SECTION -->
     <section id="hero" class="space-y-6 pt-2">
       <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-        
-        <!-- Profile Picture Box (Inlined Base64) -->
-        <div class="relative group cursor-pointer" onclick="document.getElementById('avatar-input').click()" title="Tap to select photo directly from phone">
+        <div class="relative group cursor-pointer" onclick="document.getElementById('avatar-input').click()" title="Tap to select photo from phone">
           <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-surface-card border border-surface-border overflow-hidden flex items-center justify-center shadow-lg transition-transform group-hover:scale-[1.02]">
-            <img 
-              id="profile-img" 
-              src="data:image/jpeg;base64,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" 
-              alt="Srinivasan Venkatesan" 
-              class="w-full h-full object-cover object-top" 
-            />
+            <img id="profile-img" src="https://cdn.jsdelivr.net/gh/Srinivasan1008/Interactive_Portfolio@main/16251.jpg" alt="Srinivasan Venkatesan" class="w-full h-full object-cover object-top" onerror="tryAvatarFallbacks(this)" />
+            <div id="monogram-fallback" class="hidden font-mono font-bold text-2xl text-slate-400">SV</div>
           </div>
           <span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-[#08090d]" title="Active"></span>
           <input type="file" id="avatar-input" accept="image/*" class="hidden" onchange="handleManualAvatarUpload(event)" />
@@ -134,7 +85,7 @@
           </div>
           <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">Srinivasan Venkatesan</h1>
           <p class="text-sm text-slate-400 max-w-xl leading-relaxed">
-            Senior Full Stack Engineer with 6+ years building enterprise UI/UX architectures, scalable APIs, and autonomous AI agents. Digital artist sharing contemplative illustrations at <a href="https://www.instagram.com/couch_artato?obrf=MTl0a2FwcnhuZHJ5ag==" target="_blank" class="text-emerald-400 hover:underline">@couch_artato</a>.
+            Senior Full Stack Engineer with 6+ years building enterprise UI/UX architectures, scalable APIs, and autonomous AI agents. Digital artist sharing contemplative illustrations at @couch_artato.
           </p>
         </div>
       </div>
@@ -142,45 +93,44 @@
       <!-- Quick Action Buttons -->
       <div class="flex flex-wrap gap-2.5 pt-1 font-mono text-xs">
         <a href="https://github.com/Srinivasan1008" target="_blank" class="px-3 py-2 rounded-lg bg-surface-card border border-surface-border hover:border-emerald-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5">
-          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           github.com/Srinivasan1008
         </a>
         <a href="https://www.instagram.com/couch_artato?obrf=MTl0a2FwcnhuZHJ5ag==" target="_blank" class="px-3 py-2 rounded-lg bg-surface-card border border-surface-border hover:border-pink-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5">
-          <span>📸</span> @couch_artato
+          @couch_artato
         </a>
         <a href="https://www.linkedin.com/in/srinivasan-v-9a08157a?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="px-3 py-2 rounded-lg bg-surface-card border border-surface-border hover:border-blue-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5">
-          <span>💼</span> LinkedIn
+          LinkedIn
         </a>
         <button onclick="sharePortfolio()" class="px-3 py-2 rounded-lg bg-surface-card border border-surface-border hover:border-emerald-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5">
-          <span>🔗</span> Share Link
+          Share Link
         </button>
         <button onclick="copyEmail()" id="copy-email-btn" class="px-3 py-2 rounded-lg bg-surface-card border border-surface-border hover:border-emerald-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5">
-          <span>✉️</span> Nivas65536@gmail.com
+          Nivas65536@gmail.com
         </button>
       </div>
 
-      <!-- Quick Metrics Strip -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+      <!-- Metrics -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 font-mono">
         <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border">
-          <div class="text-[11px] font-mono text-slate-400">EXPERIENCE</div>
+          <div class="text-[11px] text-slate-400">EXPERIENCE</div>
           <div class="text-xl font-bold text-white mt-1">6+ Years</div>
         </div>
         <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border">
-          <div class="text-[11px] font-mono text-slate-400">TOOL ADOPTION</div>
+          <div class="text-[11px] text-slate-400">TOOL ADOPTION</div>
           <div class="text-xl font-bold text-emerald-400 mt-1">85%</div>
         </div>
         <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border">
-          <div class="text-[11px] font-mono text-slate-400">AWARDS</div>
+          <div class="text-[11px] text-slate-400">AWARDS</div>
           <div class="text-xl font-bold text-white mt-1">11 Honors</div>
         </div>
         <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border">
-          <div class="text-[11px] font-mono text-slate-400">DEV VELOCITY</div>
+          <div class="text-[11px] text-slate-400">DEV VELOCITY</div>
           <div class="text-xl font-bold text-emerald-400 mt-1">+30% AI</div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION: ARCADE GAME & LEADERBOARD (CLEAN ORIGINAL + 15MS HAPTIC) -->
+    <!-- SECTION: ARCADE GAME -->
     <section id="game" class="space-y-4">
       <div class="flex items-end justify-between border-b border-surface-border pb-3">
         <div>
@@ -193,13 +143,11 @@
         </div>
       </div>
 
-      <!-- Game Stage -->
       <div class="relative w-full rounded-2xl bg-[#050608] border border-surface-border overflow-hidden select-none">
         <canvas id="gameCanvas" class="w-full h-56 sm:h-64 block cursor-pointer"></canvas>
 
-        <!-- Overlay Screen (Start / Game Over) -->
         <div id="gameOverlay" class="absolute inset-0 bg-[#08090d]/90 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center z-10">
-          <span id="overlayPill" class="text-[11px] font-mono uppercase px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 mb-2">
+          <span class="text-[11px] font-mono uppercase px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 mb-2">
             One-Tap Gravity Flip
           </span>
           <h3 id="overlayTitle" class="text-2xl font-bold text-white mb-1">Binary Orbit</h3>
@@ -211,15 +159,14 @@
               START RUN
             </button>
             <button onclick="toggleMute()" id="muteBtn" class="px-3 py-2.5 rounded-lg bg-surface-card border border-surface-border text-xs text-slate-300 hover:text-white transition">
-              🔊 Sound On
+              Sound On
             </button>
           </div>
         </div>
       </div>
 
-      <!-- Clean Score Bar & Top 3 Podium -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-        <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border flex items-center justify-between font-mono">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 font-mono">
+        <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border flex items-center justify-between">
           <div>
             <div class="text-[10px] text-slate-400">CURRENT RUN</div>
             <div id="currentScore" class="text-2xl font-bold text-white">00</div>
@@ -232,12 +179,10 @@
 
         <div class="md:col-span-2 p-3.5 rounded-xl bg-surface-card border border-surface-border flex flex-col justify-between">
           <div class="flex items-center justify-between text-xs font-mono text-slate-400 border-b border-surface-border/60 pb-1.5 mb-2">
-            <span class="flex items-center gap-1.5 text-slate-300 font-semibold">
-              <span>🏆</span> TOP 3 LEADERBOARD
-            </span>
+            <span class="flex items-center gap-1.5 text-slate-300 font-semibold">TOP 3 LEADERBOARD</span>
             <button onclick="resetLeaderboard()" class="text-[10px] text-slate-500 hover:text-red-400 transition">Reset</button>
           </div>
-          <div id="leaderboardList" class="grid grid-cols-3 gap-2 font-mono text-xs"></div>
+          <div id="leaderboardList" class="grid grid-cols-3 gap-2 text-xs"></div>
         </div>
       </div>
     </section>
@@ -250,7 +195,7 @@
       </div>
 
       <div class="space-y-3">
-        <div class="p-4 rounded-xl bg-surface-card border border-surface-border hover:border-surface-subtle transition">
+        <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
             <div class="flex items-center gap-2">
               <span class="text-sm font-semibold text-white">Verizon</span>
@@ -259,7 +204,7 @@
             <span class="font-mono text-xs text-slate-400">09/2025 – Present</span>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed mb-2.5">
-            Leading UI/UX architecture for the APEX enterprise platform, driving 85% corporate tool adoption[span_4](start_span)[span_4](end_span). Built the automated Regression Execution Agent (React TS) and authored GENTAAS decoupled migration systems[span_5](start_span)[span_5](end_span).
+            Leading UI/UX architecture for the APEX enterprise platform, driving 85% corporate tool adoption. Built the automated Regression Execution Agent (React TS) and authored GENTAAS decoupled migration systems.
           </p>
           <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-slate-400">
             <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">React TS</span>
@@ -269,7 +214,7 @@
           </div>
         </div>
 
-        <div class="p-4 rounded-xl bg-surface-card border border-surface-border hover:border-surface-subtle transition">
+        <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
             <div class="flex items-center gap-2">
               <span class="text-sm font-semibold text-white">Verizon</span>
@@ -278,16 +223,16 @@
             <span class="font-mono text-xs text-slate-400">07/2022 – 09/2025</span>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed mb-2.5">
-            Engineered the Test Script Generator UI & iAssist integration, scaling test case adoption to 85% and defect creation to 39%[span_6](start_span)[span_6](end_span). Delivered the Order Journey Dashboard (OJD) with hierarchical node-tree visualizations[span_7](start_span)[span_7](end_span).
+            Engineered the Test Script Generator UI & iAssist integration, scaling test case adoption to 85% and defect creation to 39%. Delivered the Order Journey Dashboard (OJD) with hierarchical node-tree visualizations.
           </p>
           <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-slate-400">
-            <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">Hierarchical Visualizations</span>
+            <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">Hierarchical Node Tree</span>
             <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">RCA Diff Tool</span>
             <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">iAssist</span>
           </div>
         </div>
 
-        <div class="p-4 rounded-xl bg-surface-card border border-surface-border hover:border-surface-subtle transition">
+        <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
             <div class="flex items-center gap-2">
               <span class="text-sm font-semibold text-white">Verizon</span>
@@ -296,7 +241,7 @@
             <span class="font-mono text-xs text-slate-400">08/2020 – 07/2022</span>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed">
-            Built the initial TAAS/GENTAAS dashboard from scratch with React and Node.js APIs backed by MySQL[span_8](start_span)[span_8](end_span). Automated operational metric tracking in the Magic platform[span_9](start_span)[span_9](end_span).
+            Built the initial TAAS/GENTAAS dashboard from scratch with React and Node.js APIs backed by MySQL. Automated operational metric tracking in the Magic platform.
           </p>
         </div>
       </div>
@@ -313,19 +258,19 @@
         <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
           <div class="font-mono text-emerald-400 text-lg font-bold">7× Spotlight Awards</div>
           <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-            Honored for sustained excellence in UI architectural development across GENTAAS, OJD, and TAAS platforms[span_10](start_span)[span_10](end_span).
+            Honored for sustained excellence in UI architectural development across GENTAAS, OJD, and TAAS platforms.
           </p>
         </div>
         <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
           <div class="font-mono text-white text-lg font-bold">4× Simple Thanks</div>
           <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-            Awarded for extra effort in building successful PDF compare tools and self-healing automation[span_11](start_span)[span_11](end_span).
+            Awarded for extra effort in building successful PDF compare tools and self-healing automation.
           </p>
         </div>
         <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
           <div class="font-mono text-pink-400 text-lg font-bold">SASTRA University</div>
           <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-            Bachelor of Information Technology (2020)[span_12](start_span)[span_12](end_span). Digital art featured in VCG Times and VCG Canvas[span_13](start_span)[span_13](end_span).
+            Bachelor of Information Technology (2020). Digital art featured in VCG Times and VCG Canvas.
           </p>
         </div>
       </div>
@@ -339,7 +284,7 @@
           <h2 class="text-xl font-bold text-white mt-0.5">The Sketchbook Lab</h2>
         </div>
         <a href="https://www.instagram.com/couch_artato?obrf=MTl0a2FwcnhuZHJ5ag==" target="_blank" class="text-xs font-mono text-pink-400 hover:text-pink-300 transition flex items-center gap-1">
-          <span>@couch_artato</span> ↗
+          @couch_artato ↗
         </a>
       </div>
 
@@ -347,68 +292,11 @@
         Illustrations and sketchbook concepts. Cropped cleanly to isolate the artwork. Tap any piece to view the full resolution post on Instagram.
       </p>
 
-      <!-- 6 Cropped Art Cards with Scroll-Safe Tap Layer -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
-        <!-- Post 1: DbjHAcvTefp -->
-        <div class="pure-art-frame group">
-          <a href="https://www.instagram.com/p/DbjHAcvTefp/?vrfl=MWpzM3B3dnE3c2V2Mw==" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
-          <blockquote class="instagram-media" 
-            data-instgrm-permalink="https://www.instagram.com/p/DbjHAcvTefp/" 
-            data-instgrm-version="14">
-          </blockquote>
-        </div>
+      <!-- 6 Cropped Art Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="artGalleryGrid"></div>
 
-        <!-- Post 2: DNalgacz1RZ -->
-        <div class="pure-art-frame group">
-          <a href="https://www.instagram.com/p/DNalgacz1RZ/?dlrf=MWpqam1pdTIwcGE2eQ==" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
-          <blockquote class="instagram-media" 
-            data-instgrm-permalink="https://www.instagram.com/p/DNalgacz1RZ/" 
-            data-instgrm-version="14">
-          </blockquote>
-        </div>
-
-        <!-- Post 3: DGALgnhIdMB -->
-        <div class="pure-art-frame group">
-          <a href="https://www.instagram.com/p/DGALgnhIdMB/?vrfl=MW5waW5odTNja3U1Mg==" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
-          <blockquote class="instagram-media" 
-            data-instgrm-permalink="https://www.instagram.com/p/DGALgnhIdMB/" 
-            data-instgrm-version="14">
-          </blockquote>
-        </div>
-
-        <!-- Post 4: DAvv0esTr0O -->
-        <div class="pure-art-frame group">
-          <a href="https://www.instagram.com/p/DAvv0esTr0O/?xtok=eTg1aTNlYWhqc25y" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
-          <blockquote class="instagram-media" 
-            data-instgrm-permalink="https://www.instagram.com/p/DAvv0esTr0O/" 
-            data-instgrm-version="14">
-          </blockquote>
-        </div>
-
-        <!-- Post 5: DCFenEpTmil -->
-        <div class="pure-art-frame group">
-          <a href="https://www.instagram.com/p/DCFenEpTmil/?obrf=MXR2NjFhMzh2ODNnaA==" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
-          <blockquote class="instagram-media" 
-            data-instgrm-permalink="https://www.instagram.com/p/DCFenEpTmil/" 
-            data-instgrm-version="14">
-          </blockquote>
-        </div>
-
-        <!-- Post 6: DAXl2KQyxbw -->
-        <div class="pure-art-frame group">
-          <a href="https://www.instagram.com/p/DAXl2KQyxbw/?xtok=OXZ6eHl5M25xb3Fu" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
-          <blockquote class="instagram-media" 
-            data-instgrm-permalink="https://www.instagram.com/p/DAXl2KQyxbw/" 
-            data-instgrm-version="14">
-          </blockquote>
-        </div>
-
-      </div>
-
-      <!-- Follow Banner -->
       <div class="p-4 rounded-xl bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-transparent border border-pink-500/20 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-xs">
-        <span class="text-slate-300">Discover all sketchbook series, character design concepts, and digital art drops:</span>
+        <span class="text-slate-300">Discover full sketchbook archives, character studies, and concept drops:</span>
         <a href="https://www.instagram.com/couch_artato?obrf=MTl0a2FwcnhuZHJ5ag==" target="_blank" class="px-4 py-2 rounded-lg bg-pink-500/20 hover:bg-pink-500/30 text-pink-300 border border-pink-500/30 transition whitespace-nowrap">
           Follow @couch_artato ↗
         </a>
@@ -417,9 +305,7 @@
 
     <!-- FOOTER -->
     <footer class="pt-8 pb-12 border-t border-surface-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
-      <div>
-        © 2026 Srinivasan Venkatesan. Built 100% on Mobile.
-      </div>
+      <div>© 2026 Srinivasan Venkatesan. Built 100% on Mobile.</div>
       <div class="flex items-center gap-4">
         <a href="https://github.com/Srinivasan1008" target="_blank" class="hover:text-slate-300 transition">GitHub</a>
         <a href="https://www.instagram.com/couch_artato?obrf=MTl0a2FwcnhuZHJ5ag==" target="_blank" class="hover:text-slate-300 transition">Instagram</a>
@@ -430,10 +316,10 @@
 
   </main>
 
-  <!-- GAME OVER / RECORD SUBMISSION MODAL -->
-  <div id="recordModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="w-full max-w-xs p-5 rounded-xl bg-surface-card border border-emerald-500/40 text-center font-mono">
-      <div class="text-emerald-400 text-sm font-bold mb-1">🎉 TOP 3 FINISH!</div>
+  <!-- RECORD SUBMISSION MODAL -->
+  <div id="recordModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 font-mono">
+    <div class="w-full max-w-xs p-5 rounded-xl bg-surface-card border border-emerald-500/40 text-center">
+      <div class="text-emerald-400 text-sm font-bold mb-1">TOP 3 FINISH!</div>
       <div class="text-xs text-slate-300 mb-3">You ranked among the top runners.</div>
       <div class="text-2xl font-bold text-white mb-4" id="modalFinalScore">00</div>
       <input type="text" id="playerInitials" maxlength="3" placeholder="YOUR INITIALS" class="w-full text-center tracking-widest uppercase bg-[#0b0c10] border border-surface-border rounded-lg px-3 py-2 text-white text-sm mb-3 focus:outline-none focus:border-emerald-500" />
@@ -443,10 +329,41 @@
     </div>
   </div>
 
-  <!-- Official Instagram Embed Script -->
   <script async src="//www.instagram.com/embed.js"></script>
 
   <script>
+    /* 1. POPULATE ART GALLERY */
+    const artPosts = ['DbjHAcvTefp', 'DNalgacz1RZ', 'DGALgnhIdMB', 'DAvv0esTr0O', 'DCFenEpTmil', 'DAXl2KQyxbw'];
+    const artGrid = document.getElementById('artGalleryGrid');
+    artPosts.forEach(id => {
+      const url = `https://www.instagram.com/p/${id}/`;
+      const div = document.createElement('div');
+      div.className = 'pure-art-frame group';
+      div.innerHTML = `
+        <a href="${url}" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
+        <blockquote class="instagram-media" data-instgrm-permalink="${url}" data-instgrm-version="14"></blockquote>
+      `;
+      artGrid.appendChild(div);
+    });
+
+    /* 2. AVATAR FALLBACK CASCADE */
+    let avatarAttempt = 0;
+    function tryAvatarFallbacks(img) {
+      avatarAttempt++;
+      const cached = localStorage.getItem('user_portfolio_avatar');
+      if (cached && img.src !== cached) { img.src = cached; return; }
+      if (avatarAttempt === 1) {
+        img.src = 'https://raw.githubusercontent.com/Srinivasan1008/Interactive_Portfolio/main/16251.jpg';
+        return;
+      }
+      if (avatarAttempt === 2) {
+        img.src = './16251.jpg';
+        return;
+      }
+      img.classList.add('hidden');
+      document.getElementById('monogram-fallback').classList.remove('hidden');
+    }
+
     function handleManualAvatarUpload(event) {
       const file = event.target.files[0];
       if (file) {
@@ -455,6 +372,8 @@
           const base64Data = e.target.result;
           const img = document.getElementById('profile-img');
           img.src = base64Data;
+          img.classList.remove('hidden');
+          document.getElementById('monogram-fallback').classList.add('hidden');
           localStorage.setItem('user_portfolio_avatar', base64Data);
         };
         reader.readAsDataURL(file);
@@ -466,6 +385,8 @@
       if (savedAvatar) {
         const img = document.getElementById('profile-img');
         img.src = savedAvatar;
+        img.classList.remove('hidden');
+        document.getElementById('monogram-fallback').classList.add('hidden');
       }
       renderLeaderboard();
       initCanvas();
@@ -475,27 +396,23 @@
       if (navigator.share) {
         navigator.share({
           title: 'Srinivasan Venkatesan | Portfolio',
-          text: 'Check out the interactive developer & digital art portfolio of Srinivasan Venkatesan.',
+          text: 'Interactive developer & digital art portfolio of Srinivasan Venkatesan.',
           url: window.location.href
         }).catch(() => {});
-      } else {
-        copyEmail();
-      }
+      } else { copyEmail(); }
     }
 
     function copyEmail() {
       navigator.clipboard.writeText('Nivas65536@gmail.com');
       const btn = document.getElementById('copy-email-btn');
       const orig = btn.innerHTML;
-      btn.innerHTML = '<span>✓</span> Copied!';
+      btn.innerHTML = '✓ Copied!';
       setTimeout(() => btn.innerHTML = orig, 2000);
     }
 
-    /* TOP 3 LEADERBOARD */
+    /* 3. LEADERBOARD */
     const DEFAULT_LEADERBOARD = [
-      { tag: "SVI", score: 48 },
-      { tag: "APX", score: 32 },
-      { tag: "GEN", score: 18 }
+      { tag: "SVI", score: 48 }, { tag: "APX", score: 32 }, { tag: "GEN", score: 18 }
     ];
 
     function getLeaderboard() {
@@ -519,65 +436,42 @@
       const board = getLeaderboard();
       const listEl = document.getElementById('leaderboardList');
       const badges = ['🥇', '🥈', '🥉'];
-      
       listEl.innerHTML = board.map((item, idx) => `
         <div class="p-2 rounded bg-[#0a0b10] border border-surface-border text-center">
           <div class="text-[10px] text-slate-500">${badges[idx]} ${item.tag}</div>
           <div class="text-sm font-bold text-white mt-0.5">${item.score}</div>
         </div>
       `).join('');
-
       const best = Math.max(...board.map(b => b.score), 0);
       document.getElementById('bestScore').innerText = String(best).padStart(2, '0');
     }
 
-    /* ORIGINAL BINARY ORBIT (WITH 15MS HAPTIC TAP) */
+    /* 4. BINARY ORBIT GAME (15MS HAPTIC TAP) */
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
-    
-    let isPlaying = false;
-    let score = 0;
-    let soundEnabled = true;
-    let animId = null;
-
-    let player = {
-      x: 60,
-      y: 0,
-      radius: 7,
-      rail: 'bottom',
-      targetY: 0,
-      currentY: 0,
-      speed: 0.28
-    };
-
-    let obstacles = [];
-    let particles = [];
-    let speed = 4.2;
-    let spawnTimer = 0;
-    let railMargin = 38;
+    let isPlaying = false, score = 0, soundEnabled = true, animId = null;
+    let player = { x: 60, y: 0, radius: 7, rail: 'bottom', targetY: 0, currentY: 0, speed: 0.28 };
+    let obstacles = [], particles = [], speed = 4.2, spawnTimer = 0, railMargin = 38;
 
     function initCanvas() {
       const rect = canvas.getBoundingClientRect();
       canvas.width = rect.width * window.devicePixelRatio;
       canvas.height = rect.height * window.devicePixelRatio;
       ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-      
       const h = canvas.height / window.devicePixelRatio;
       player.currentY = h - railMargin;
       player.targetY = h - railMargin;
       drawPreview();
     }
-
-    window.addEventListener('resize', () => {
-      if (!isPlaying) initCanvas();
-    });
+    window.addEventListener('resize', () => { if (!isPlaying) initCanvas(); });
 
     let audioCtx = null;
     function playBeep(freq, type = 'sine', duration = 0.08) {
       if (!soundEnabled) return;
       try {
+
         if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        if (audioCtx.state === 'suspended') audioCtx.resume();
+|---|'suspended') audioCtx.resume();
         const osc = audioCtx.createGain ? audioCtx.createOscillator() : null;
         if (!osc) return;
         const gain = audioCtx.createGain();
@@ -585,16 +479,14 @@
         osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
         gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start();
-        osc.stop(audioCtx.currentTime + duration);
+        osc.connect(gain); gain.connect(audioCtx.destination);
+        osc.start(); osc.stop(audioCtx.currentTime + duration);
       } catch (e) {}
     }
 
     function toggleMute() {
       soundEnabled = !soundEnabled;
-      document.getElementById('muteBtn').innerText = soundEnabled ? '🔊 Sound On' : '🔇 Muted';
+      document.getElementById('muteBtn').innerText = soundEnabled ? 'Sound On' : 'Muted';
     }
 
     function triggerHaptic(duration = 15) {
@@ -608,40 +500,23 @@
       const h = canvas.height / window.devicePixelRatio;
       triggerHaptic(15);
       if (player.rail === 'bottom') {
-        player.rail = 'top';
-        player.targetY = railMargin;
-        playBeep(440, 'square', 0.05);
+        player.rail = 'top'; player.targetY = railMargin; playBeep(440, 'square', 0.05);
       } else {
-        player.rail = 'bottom';
-        player.targetY = h - railMargin;
-        playBeep(330, 'square', 0.05);
+        player.rail = 'bottom'; player.targetY = h - railMargin; playBeep(330, 'square', 0.05);
       }
       createBurst(player.x, player.currentY, '#10b981', 6);
     }
 
-    canvas.addEventListener('pointerdown', (e) => {
-      e.preventDefault();
-      if (isPlaying) switchRail();
-    });
-
+    canvas.addEventListener('pointerdown', (e) => { e.preventDefault(); if (isPlaying) switchRail(); });
     window.addEventListener('keydown', (e) => {
-      if (e.code === 'Space') {
-        if (isPlaying) {
-          e.preventDefault();
-          switchRail();
-        }
-      }
+      if (e.code === 'Space') { if (isPlaying) { e.preventDefault(); switchRail(); } }
     });
 
     function createBurst(x, y, color, count = 8) {
       for (let i = 0; i < count; i++) {
         particles.push({
-          x, y,
-          vx: (Math.random() - 0.5) * 5,
-          vy: (Math.random() - 0.5) * 5,
-          life: 1,
-          decay: 0.04 + Math.random() * 0.03,
-          color
+          x, y, vx: (Math.random() - 0.5) * 5, vy: (Math.random() - 0.5) * 5,
+          life: 1, decay: 0.04 + Math.random() * 0.03, color
         });
       }
     }
@@ -649,21 +524,11 @@
     function startGame() {
       document.getElementById('gameOverlay').classList.add('hidden');
       document.getElementById('recordModal').classList.add('hidden');
-      score = 0;
-      speed = 4.2;
-      obstacles = [];
-      particles = [];
-      spawnTimer = 0;
+      score = 0; speed = 4.2; obstacles = []; particles = []; spawnTimer = 0;
       document.getElementById('currentScore').innerText = '00';
-      
       const h = canvas.height / window.devicePixelRatio;
-      player.rail = 'bottom';
-      player.currentY = h - railMargin;
-      player.targetY = h - railMargin;
-      
-      isPlaying = true;
-      playBeep(520, 'sine', 0.12);
-      loop();
+      player.rail = 'bottom'; player.currentY = h - railMargin; player.targetY = h - railMargin;
+      isPlaying = true; playBeep(520, 'sine', 0.12); loop();
     }
 
     function gameOver() {
@@ -672,10 +537,8 @@
       triggerHaptic([30, 40, 30]);
       playBeep(140, 'sawtooth', 0.25);
       createBurst(player.x, player.currentY, '#ef4444', 18);
-
       const board = getLeaderboard();
       const qualifies = board.length < 3 || score > board[board.length - 1].score;
-
       if (qualifies && score > 0) {
         document.getElementById('modalFinalScore').innerText = score;
         document.getElementById('recordModal').classList.remove('hidden');
@@ -684,7 +547,6 @@
       } else {
         document.getElementById('overlayTitle').innerText = "Run Terminated";
         document.getElementById('overlaySub').innerText = `You scored ${score} pts. Practice your rail switch timing.`;
-        document.getElementById('overlayPill').innerText = `Score: ${score}`;
         document.getElementById('gameOverlay').classList.remove('hidden');
       }
     }
@@ -696,25 +558,17 @@
       board.push({ tag, score });
       board.sort((a, b) => b.score - a.score);
       saveLeaderboard(board);
-
       document.getElementById('recordModal').classList.add('hidden');
       document.getElementById('overlayTitle').innerText = "Record Logged";
       document.getElementById('overlaySub').innerText = `${tag} placed on the Top 3 podium with ${score} pts!`;
-      document.getElementById('overlayPill').innerText = `Score: ${score}`;
       document.getElementById('gameOverlay').classList.remove('hidden');
     }
 
-    function loop() {
-      if (!isPlaying) return;
-      update();
-      render();
-      animId = requestAnimationFrame(loop);
-    }
+    function loop() { if (!isPlaying) return; update(); render(); animId = requestAnimationFrame(loop); }
 
     function update() {
       const w = canvas.width / window.devicePixelRatio;
       const h = canvas.height / window.devicePixelRatio;
-
       player.currentY += (player.targetY - player.currentY) * player.speed;
 
       spawnTimer++;
@@ -723,38 +577,24 @@
         const rail = Math.random() > 0.5 ? 'top' : 'bottom';
         const isBonus = Math.random() > 0.75;
         obstacles.push({
-          x: w + 20,
-          y: rail === 'top' ? railMargin : h - railMargin,
-          rail,
-          isBonus,
-          radius: isBonus ? 5 : 8,
-          passed: false
+          x: w + 20, y: rail === 'top' ? railMargin : h - railMargin,
+          rail, isBonus, radius: isBonus ? 5 : 8, passed: false
         });
       }
 
       for (let i = obstacles.length - 1; i >= 0; i--) {
         const obs = obstacles[i];
         obs.x -= speed;
-
-        const dx = obs.x - player.x;
-        const dy = obs.y - player.currentY;
-        const dist = Math.hypot(dx, dy);
-
-        if (dist < player.radius + obs.radius + 2) {
+        const dx = obs.x - player.x, dy = obs.y - player.currentY;
+        if (Math.hypot(dx, dy) < player.radius + obs.radius + 2) {
           if (obs.isBonus) {
-            score += 3;
-            triggerHaptic(20);
-            playBeep(780, 'sine', 0.08);
+            score += 3; triggerHaptic(20); playBeep(780, 'sine', 0.08);
             createBurst(obs.x, obs.y, '#38bdf8', 8);
             obstacles.splice(i, 1);
             document.getElementById('currentScore').innerText = String(score).padStart(2, '0');
             continue;
-          } else {
-            gameOver();
-            return;
-          }
+          } else { gameOver(); return; }
         }
-
         if (!obs.passed && obs.x < player.x) {
           obs.passed = true;
           if (!obs.isBonus) {
@@ -763,15 +603,12 @@
             speed += 0.04;
           }
         }
-
         if (obs.x < -20) obstacles.splice(i, 1);
       }
 
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        p.life -= p.decay;
+        p.x += p.vx; p.y += p.vy; p.life -= p.decay;
         if (p.life <= 0) particles.splice(i, 1);
       }
     }
@@ -779,54 +616,31 @@
     function render() {
       const w = canvas.width / window.devicePixelRatio;
       const h = canvas.height / window.devicePixelRatio;
-
       ctx.clearRect(0, 0, w, h);
 
-      // Rails
-      ctx.strokeStyle = '#1e2333';
-      ctx.lineWidth = 2;
+      ctx.strokeStyle = '#1e2333'; ctx.lineWidth = 2;
       ctx.beginPath();
-      ctx.moveTo(0, railMargin);
-      ctx.lineTo(w, railMargin);
-      ctx.moveTo(0, h - railMargin);
-      ctx.lineTo(w, h - railMargin);
+      ctx.moveTo(0, railMargin); ctx.lineTo(w, railMargin);
+      ctx.moveTo(0, h - railMargin); ctx.lineTo(w, h - railMargin);
       ctx.stroke();
 
-      // Particle Trail
       ctx.fillStyle = 'rgba(16, 185, 129, 0.2)';
       ctx.beginPath();
       ctx.arc(player.x - 8, player.currentY, player.radius * 0.7, 0, Math.PI * 2);
       ctx.fill();
 
-      // Particles
       particles.forEach(p => {
-        ctx.fillStyle = p.color;
-        ctx.globalAlpha = p.life;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.fillStyle = p.color; ctx.globalAlpha = p.life;
+        ctx.beginPath(); ctx.arc(p.x, p.y, 2, 0, Math.PI * 2); ctx.fill();
         ctx.globalAlpha = 1;
       });
 
-      // Player
       ctx.fillStyle = '#10b981';
-      ctx.beginPath();
-      ctx.arc(player.x, player.currentY, player.radius, 0, Math.PI * 2);
-      ctx.fill();
+      ctx.beginPath(); ctx.arc(player.x, player.currentY, player.radius, 0, Math.PI * 2); ctx.fill();
 
-      // Obstacles
       obstacles.forEach(obs => {
-        if (obs.isBonus) {
-          ctx.fillStyle = '#38bdf8';
-          ctx.beginPath();
-          ctx.arc(obs.x, obs.y, obs.radius, 0, Math.PI * 2);
-          ctx.fill();
-        } else {
-          ctx.fillStyle = '#f43f5e';
-          ctx.beginPath();
-          ctx.arc(obs.x, obs.y, obs.radius, 0, Math.PI * 2);
-          ctx.fill();
-        }
+        ctx.fillStyle = obs.isBonus ? '#38bdf8' : '#f43f5e';
+        ctx.beginPath(); ctx.arc(obs.x, obs.y, obs.radius, 0, Math.PI * 2); ctx.fill();
       });
     }
 
@@ -834,20 +648,13 @@
       const w = canvas.width / window.devicePixelRatio;
       const h = canvas.height / window.devicePixelRatio;
       ctx.clearRect(0, 0, w, h);
-
-      ctx.strokeStyle = '#1a1e2b';
-      ctx.lineWidth = 2;
+      ctx.strokeStyle = '#1a1e2b'; ctx.lineWidth = 2;
       ctx.beginPath();
-      ctx.moveTo(0, railMargin);
-      ctx.lineTo(w, railMargin);
-      ctx.moveTo(0, h - railMargin);
-      ctx.lineTo(w, h - railMargin);
+      ctx.moveTo(0, railMargin); ctx.lineTo(w, railMargin);
+      ctx.moveTo(0, h - railMargin); ctx.lineTo(w, h - railMargin);
       ctx.stroke();
-
       ctx.fillStyle = '#10b981';
-      ctx.beginPath();
-      ctx.arc(player.x, h - railMargin, player.radius, 0, Math.PI * 2);
-      ctx.fill();
+      ctx.beginPath(); ctx.arc(player.x, h - railMargin, player.radius, 0, Math.PI * 2); ctx.fill();
     }
   </script>
 </body>
