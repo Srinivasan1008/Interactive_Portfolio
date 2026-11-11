@@ -85,4 +85,449 @@
           </div>
           <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">Srinivasan Venkatesan</h1>
           <p class="text-sm text-slate-400 max-w-xl leading-relaxed">
-            Senior Full Stack Engineer with 6+ years building enterprise UI/UX architectures, scalable APIs, and autonomous AI agents. Digital artist sharing contemplative illustrations
+            Senior Full Stack Engineer with 6+ years building enterprise UI/UX architectures, scalable APIs, and autonomous AI agents. Digital artist sharing contemplative illustrations at <a href="https://www.instagram.com/couch_artato?obrf=MTl0a2FwcnhuZHJ5ag==" target="_blank" class="text-emerald-400 hover:underline">@couch_artato</a>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="flex flex-wrap gap-2.5 pt-1 font-mono text-xs">
+        <a href="https://github.com/Srinivasan1008" target="_blank" class="px-3 py-2 rounded-lg bg-surface-card border border-surface-border hover:border-emerald-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          github.com/Srinivasan1008
+        </a>
+        <a href="https://www.instagram.com/couch_artato?obrf=MTl0a2FwcnhuZHJ5ag==" target="_blank" class="px-3 py-2 rounded-lg bg-surface-card border border-surface-border hover:border-pink-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+          <span>📸</span> @couch_artato
+        </a>
+        <a href="https://www.linkedin.com/in/srinivasan-v-9a08157a?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="px-3 py-2 rounded-lg bg-surface-card border border-surface-border hover:border-blue-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+          <span>💼</span> LinkedIn
+        </a>
+        <button onclick="sharePortfolio()" class="px-3 py-2 rounded-lg bg-surface-card border border-surface-border hover:border-emerald-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+          <span>🔗</span> Share Link
+        </button>
+        <button onclick="copyEmail()" id="copy-email-btn" class="px-3 py-2 rounded-lg bg-surface-card border border-surface-border hover:border-emerald-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+          <span>✉️</span> Nivas65536@gmail.com
+        </button>
+      </div>
+
+      <!-- Metrics -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 font-mono">
+        <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border">
+          <div class="text-[11px] text-slate-400">EXPERIENCE</div>
+          <div class="text-xl font-bold text-white mt-1">6+ Years</div>
+        </div>
+        <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border">
+          <div class="text-[11px] text-slate-400">TOOL ADOPTION</div>
+          <div class="text-xl font-bold text-emerald-400 mt-1">85%</div>
+        </div>
+        <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border">
+          <div class="text-[11px] text-slate-400">AWARDS</div>
+          <div class="text-xl font-bold text-white mt-1">11 Honors</div>
+        </div>
+        <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border">
+          <div class="text-[11px] text-slate-400">DEV VELOCITY</div>
+          <div class="text-xl font-bold text-emerald-400 mt-1">+30% AI</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: ARCADE GAME -->
+    <section id="game" class="space-y-4">
+      <div class="flex items-end justify-between border-b border-surface-border pb-3">
+        <div>
+          <span class="text-xs font-mono text-emerald-400"># MINIMALIST ARCADE</span>
+          <h2 class="text-xl font-bold text-white mt-0.5">Binary Orbit</h2>
+        </div>
+        <div class="text-right">
+          <span class="text-[11px] font-mono text-slate-400">CONTROLS:</span>
+          <span class="text-xs font-mono text-slate-300 block">Tap Screen or Spacebar</span>
+        </div>
+      </div>
+
+      <div class="relative w-full rounded-2xl bg-[#050608] border border-surface-border overflow-hidden select-none">
+        <canvas id="gameCanvas" class="w-full h-56 sm:h-64 block cursor-pointer"></canvas>
+
+        <div id="gameOverlay" class="absolute inset-0 bg-[#08090d]/90 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center z-10">
+          <span class="text-[11px] font-mono uppercase px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 mb-2">
+            One-Tap Gravity Flip
+          </span>
+          <h3 id="overlayTitle" class="text-2xl font-bold text-white mb-1">Binary Orbit</h3>
+          <p id="overlaySub" class="text-xs text-slate-400 max-w-xs mb-4">
+            Tap or Spacebar to switch rails. Dodge hazards and grab pulses.
+          </p>
+          <div class="flex items-center gap-3">
+            <button onclick="startGame()" class="px-5 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs tracking-wider transition">
+              START RUN
+            </button>
+            <button onclick="toggleMute()" id="muteBtn" class="px-3 py-2.5 rounded-lg bg-surface-card border border-surface-border text-xs text-slate-300 hover:text-white transition">
+              🔊 Sound On
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 font-mono">
+        <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border flex items-center justify-between">
+          <div>
+            <div class="text-[10px] text-slate-400">CURRENT RUN</div>
+            <div id="currentScore" class="text-2xl font-bold text-white">00</div>
+          </div>
+          <div class="text-right">
+            <div class="text-[10px] text-slate-400">PERSONAL BEST</div>
+            <div id="bestScore" class="text-2xl font-bold text-emerald-400">00</div>
+          </div>
+        </div>
+
+        <div class="md:col-span-2 p-3.5 rounded-xl bg-surface-card border border-surface-border flex flex-col justify-between">
+          <div class="flex items-center justify-between text-xs font-mono text-slate-400 border-b border-surface-border/60 pb-1.5 mb-2">
+            <span class="flex items-center gap-1.5 text-slate-300 font-semibold">🏆 TOP 3 LEADERBOARD</span>
+            <button onclick="resetLeaderboard()" class="text-[10px] text-slate-500 hover:text-red-400 transition">Reset</button>
+          </div>
+          <div id="leaderboardList" class="grid grid-cols-3 gap-2 text-xs"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: PROFESSIONAL EXPERIENCE -->
+    <section id="experience" class="space-y-4">
+      <div class="border-b border-surface-border pb-3">
+        <span class="text-xs font-mono text-emerald-400"># CAREER MILESTONES</span>
+        <h2 class="text-xl font-bold text-white mt-0.5">Enterprise Engineering</h2>
+      </div>
+
+      <div class="space-y-3">
+        <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-semibold text-white">Verizon</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Engineer III Spec</span>
+            </div>
+            <span class="font-mono text-xs text-slate-400">09/2025 – Present</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed mb-2.5">
+            Leading UI/UX architecture for the APEX enterprise platform, driving 85% corporate tool adoption. Built the automated Regression Execution Agent (React TS) and authored GENTAAS decoupled migration systems.
+          </p>
+          <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-slate-400">
+            <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">React TS</span>
+            <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">Claude AI Skills</span>
+            <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">GitHub Copilot</span>
+            <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">APEX Platform</span>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-semibold text-white">Verizon</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300">Engineer II</span>
+            </div>
+            <span class="font-mono text-xs text-slate-400">07/2022 – 09/2025</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed mb-2.5">
+            Engineered the Test Script Generator UI & iAssist integration, scaling test case adoption to 85% and defect creation to 39%. Delivered the Order Journey Dashboard (OJD) with hierarchical node-tree visualizations.
+          </p>
+          <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-slate-400">
+            <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">Hierarchical Node Tree</span>
+            <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">RCA Diff Tool</span>
+            <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">iAssist</span>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-semibold text-white">Verizon</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300">Engineer I</span>
+            </div>
+            <span class="font-mono text-xs text-slate-400">08/2020 – 07/2022</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Built the initial TAAS/GENTAAS dashboard from scratch with React and Node.js APIs backed by MySQL. Automated operational metric tracking in the Magic platform.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: AWARDS & EDUCATION -->
+    <section class="space-y-4">
+      <div class="border-b border-surface-border pb-3">
+        <span class="text-xs font-mono text-emerald-400"># RECOGNITION & BACKGROUND</span>
+        <h2 class="text-xl font-bold text-white mt-0.5">Honors & Education</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
+          <div class="font-mono text-emerald-400 text-lg font-bold">7× Spotlight Awards</div>
+          <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+            Honored for sustained excellence in UI architectural development across GENTAAS, OJD, and TAAS platforms.
+          </p>
+        </div>
+        <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
+          <div class="font-mono text-white text-lg font-bold">4× Simple Thanks</div>
+          <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+            Awarded for extra effort in building successful PDF compare tools and self-healing automation.
+          </p>
+        </div>
+        <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
+          <div class="font-mono text-pink-400 text-lg font-bold">SASTRA University</div>
+          <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+            Bachelor of Information Technology (2020). Digital art featured in VCG Times and VCG Canvas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: DIGITAL ART STUDIO (PURE ARTWORK CROP - NO HEADER / NO FOOTER) -->
+    <section id="art" class="space-y-6">
+      <div class="flex items-end justify-between border-b border-surface-border pb-3">
+        <div>
+          <span class="text-xs font-mono text-emerald-400"># DIGITAL ARTWORKS</span>
+          <h2 class="text-xl font-bold text-white mt-0.5">The Sketchbook Lab</h2>
+        </div>
+        <a href="https://www.instagram.com/couch_artato?obrf=MTl0a2FwcnhuZHJ5ag==" target="_blank" class="text-xs font-mono text-pink-400 hover:text-pink-300 transition flex items-center gap-1">
+          <span>@couch_artato</span> ↗
+        </a>
+      </div>
+
+      <p class="text-xs text-slate-400">
+        Illustrations and sketchbook concepts. Cropped cleanly to isolate the artwork. Tap any piece to view the full resolution post on Instagram.
+      </p>
+
+      <!-- 6 Cropped Art Cards Directly in HTML -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="artGalleryGrid">
+        <div class="pure-art-frame group">
+          <a href="https://www.instagram.com/p/DbjHAcvTefp/" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DbjHAcvTefp/" data-instgrm-version="14"></blockquote>
+        </div>
+        <div class="pure-art-frame group">
+          <a href="https://www.instagram.com/p/DNalgacz1RZ/" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DNalgacz1RZ/" data-instgrm-version="14"></blockquote>
+        </div>
+        <div class="pure-art-frame group">
+          <a href="https://www.instagram.com/p/DGALgnhIdMB/" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DGALgnhIdMB/" data-instgrm-version="14"></blockquote>
+        </div>
+        <div class="pure-art-frame group">
+          <a href="https://www.instagram.com/p/DAvv0esTr0O/" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DAvv0esTr0O/" data-instgrm-version="14"></blockquote>
+        </div>
+        <div class="pure-art-frame group">
+          <a href="https://www.instagram.com/p/DCFenEpTmil/" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DCFenEpTmil/" data-instgrm-version="14"></blockquote>
+        </div>
+        <div class="pure-art-frame group">
+          <a href="https://www.instagram.com/p/DAXl2KQyxbw/" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DAXl2KQyxbw/" data-instgrm-version="14"></blockquote>
+        </div>
+      </div>
+
+      <div class="p-4 rounded-xl bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-transparent border border-pink-500/20 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-xs">
+        <span class="text-slate-300">Discover full sketchbook archives, character studies, and concept drops:</span>
+        <a href="https://www.instagram.com/couch_artato?obrf=MTl0a2FwcnhuZHJ5ag==" target="_blank" class="px-4 py-2 rounded-lg bg-pink-500/20 hover:bg-pink-500/30 text-pink-300 border border-pink-500/30 transition whitespace-nowrap">
+          Follow @couch_artato ↗
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="pt-8 pb-12 border-t border-surface-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
+      <div>© 2026 Srinivasan Venkatesan. Built 100% on Mobile.</div>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/Srinivasan1008" target="_blank" class="hover:text-slate-300 transition">GitHub</a>
+        <a href="https://www.instagram.com/couch_artato?obrf=MTl0a2FwcnhuZHJ5ag==" target="_blank" class="hover:text-slate-300 transition">Instagram</a>
+        <a href="https://www.linkedin.com/in/srinivasan-v-9a08157a?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" target="_blank" class="hover:text-slate-300 transition">LinkedIn</a>
+        <a href="#hero" class="hover:text-emerald-400 transition">Back to Top ↑</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- RECORD SUBMISSION MODAL -->
+  <div id="recordModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 font-mono">
+    <div class="w-full max-w-xs p-5 rounded-xl bg-surface-card border border-emerald-500/40 text-center">
+      <div class="text-emerald-400 text-sm font-bold mb-1">🎉 TOP 3 FINISH!</div>
+      <div class="text-xs text-slate-300 mb-3">You ranked among the top runners.</div>
+      <div class="text-2xl font-bold text-white mb-4" id="modalFinalScore">00</div>
+      <input type="text" id="playerInitials" maxlength="3" placeholder="YOUR INITIALS" class="w-full text-center tracking-widest uppercase bg-[#0b0c10] border border-surface-border rounded-lg px-3 py-2 text-white text-sm mb-3 focus:outline-none focus:border-emerald-500" />
+      <button onclick="submitLeaderboardEntry()" class="w-full py-2 rounded-lg bg-emerald-500 text-black font-semibold text-xs hover:bg-emerald-400 transition">
+        SAVE RECORD
+      </button>
+    </div>
+  </div>
+
+  <script async src="//www.instagram.com/embed.js"></script>
+
+  <script>
+    /* 1. AVATAR FALLBACK CASCADE */
+    let avatarAttempt = 0;
+    function tryAvatarFallbacks(img) {
+      avatarAttempt++;
+      const cached = localStorage.getItem('user_portfolio_avatar');
+      if (cached && img.src !== cached) { img.src = cached; return; }
+      if (avatarAttempt === 1) {
+        img.src = 'https://raw.githubusercontent.com/Srinivasan1008/Interactive_Portfolio/main/16251.jpg';
+        return;
+      }
+      if (avatarAttempt === 2) {
+        img.src = './16251.jpg';
+        return;
+      }
+      img.classList.add('hidden');
+      document.getElementById('monogram-fallback').classList.remove('hidden');
+    }
+
+    function handleManualAvatarUpload(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const base64Data = e.target.result;
+          const img = document.getElementById('profile-img');
+          img.src = base64Data;
+          img.classList.remove('hidden');
+          document.getElementById('monogram-fallback').classList.add('hidden');
+          localStorage.setItem('user_portfolio_avatar', base64Data);
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedAvatar = localStorage.getItem('user_portfolio_avatar');
+      if (savedAvatar) {
+        const img = document.getElementById('profile-img');
+        img.src = savedAvatar;
+        img.classList.remove('hidden');
+        document.getElementById('monogram-fallback').classList.add('hidden');
+      }
+      renderLeaderboard();
+      initCanvas();
+      if (window.instgrm) {
+        window.instgrm.Embeds.process();
+      }
+    });
+
+    function sharePortfolio() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Srinivasan Venkatesan | Portfolio',
+          text: 'Interactive developer & digital art portfolio of Srinivasan Venkatesan.',
+          url: window.location.href
+        }).catch(() => {});
+      } else { copyEmail(); }
+    }
+
+    function copyEmail() {
+      navigator.clipboard.writeText('Nivas65536@gmail.com');
+      const btn = document.getElementById('copy-email-btn');
+      const orig = btn.innerHTML;
+      btn.innerHTML = '<span>✓</span> Copied!';
+      setTimeout(() => btn.innerHTML = orig, 2000);
+    }
+
+    /* 2. LEADERBOARD */
+    const DEFAULT_LEADERBOARD = [
+      { tag: "SVI", score: 48 }, { tag: "APX", score: 32 }, { tag: "GEN", score: 18 }
+    ];
+
+    function getLeaderboard() {
+      const saved = localStorage.getItem('arcade_top3');
+      return saved ? JSON.parse(saved) : DEFAULT_LEADERBOARD;
+    }
+
+    function saveLeaderboard(board) {
+      localStorage.setItem('arcade_top3', JSON.stringify(board.slice(0, 3)));
+      renderLeaderboard();
+    }
+
+    function resetLeaderboard() {
+      if (confirm("Reset the arcade leaderboard back to default?")) {
+        localStorage.removeItem('arcade_top3');
+        renderLeaderboard();
+      }
+    }
+
+    function renderLeaderboard() {
+      const board = getLeaderboard();
+      const listEl = document.getElementById('leaderboardList');
+      const badges = ['🥇', '🥈', '🥉'];
+      listEl.innerHTML = board.map((item, idx) => `
+        <div class="p-2 rounded bg-[#0a0b10] border border-surface-border text-center">
+          <div class="text-[10px] text-slate-500">${badges[idx]} ${item.tag}</div>
+          <div class="text-sm font-bold text-white mt-0.5">${item.score}</div>
+        </div>
+      `).join('');
+      const best = Math.max(...board.map(b => b.score), 0);
+      document.getElementById('bestScore').innerText = String(best).padStart(2, '0');
+    }
+
+    /* 3. BINARY ORBIT GAME (15MS HAPTIC TAP) */
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    let isPlaying = false, score = 0, soundEnabled = true, animId = null;
+    let player = { x: 60, y: 0, radius: 7, rail: 'bottom', targetY: 0, currentY: 0, speed: 0.28 };
+    let obstacles = [], particles = [], speed = 4.2, spawnTimer = 0, railMargin = 38;
+
+    function initCanvas() {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * window.devicePixelRatio;
+      canvas.height = rect.height * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      const h = canvas.height / window.devicePixelRatio;
+      player.currentY = h - railMargin;
+      player.targetY = h - railMargin;
+      drawPreview();
+    }
+    window.addEventListener('resize', () => { if (!isPlaying) initCanvas(); });
+
+    let audioCtx = null;
+    function playBeep(freq, type = 'sine', duration = 0.08) {
+      if (!soundEnabled) return;
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createGain ? audioCtx.createOscillator() : null;
+        if (!osc) return;
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain); gain.connect(audioCtx.destination);
+        osc.start(); osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    function toggleMute() {
+      soundEnabled = !soundEnabled;
+      document.getElementById('muteBtn').innerText = soundEnabled ? '🔊 Sound On' : '🔇 Muted';
+    }
+
+    function triggerHaptic(duration = 15) {
+      if ('vibrate' in navigator) {
+        try { navigator.vibrate(duration); } catch(e) {}
+      }
+    }
+
+    function switchRail() {
+      if (!isPlaying) return;
+      const h = canvas.height / window.devicePixelRatio;
+      triggerHaptic(15);
+      if (player.rail === 'bottom') {
+        player.rail = 'top'; player.targetY = railMargin; playBeep(440, 'square', 0.05);
+      } else {
+        player.rail = 'bottom'; player.targetY = h - railMargin; playBeep(330, 'square', 0.05);
+      }
+      createBurst(player.x, player.currentY, '#10b981', 6);
+    }
+
+    canvas.addEventListener('pointerdown', (e) => { e.preventDefault(); if (isPlaying) switchRail(); });
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'Space') { if (isPlaying) { e.preventDefault(); switchRail(); } }
+    });
+
+    function createBurst(x, y, color, count = 8) {
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x, y, vx: (Math.random() - 0.5) * 5, vy: (Math.random() - 0.5) * 5,
+          life: 1, decay: 0.04 + Math.random() * 
