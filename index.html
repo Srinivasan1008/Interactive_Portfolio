@@ -2,7 +2,7 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Srinivasan Venkatesan | Senior Full Stack Developer & Artist</title>
 
   <!-- Tailwind CSS CDN -->
@@ -44,6 +44,7 @@
     body {
       background-color: #08090d;
       color: #e2e8f0;
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     }
     ::selection {
       background: #10b981;
@@ -55,31 +56,49 @@
         linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
     }
-    /* Clean Instagram uncaptioned embeds */
-    .instagram-media {
-      background: #0d0e14 !important;
-      border: 1px solid #1f2330 !important;
-      border-radius: 12px !important;
+    
+    /* Dedicated Canvas Touch Isolation */
+    #gameCanvas {
+      touch-action: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* PURE ARTWORK ISOLATION: Crops off top header and bottom footer cleanly */
+    .art-post-wrapper {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #0d0e14;
+      border: 1px solid #1f2330;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+    .art-post-wrapper iframe,
+    .art-post-wrapper .instagram-media {
+      position: relative !important;
+      top: -54px !important;
       margin: 0 auto !important;
+      width: 100% !important;
       min-width: 100% !important;
-      max-width: 100% !important;
+      border: none !important;
     }
   </style>
 </head>
 <body class="min-h-screen grid-bg font-sans antialiased selection:bg-emerald-500 selection:text-black">
 
-  <!-- Minimal Header -->
+  <!-- Header -->
   <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-[#08090d]/85 border-b border-surface-border">
     <div class="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
       <a href="#hero" class="flex items-center gap-2 group">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
         <span class="font-mono text-xs tracking-wider text-slate-300 group-hover:text-white transition">srinivasan.v</span>
       </a>
-      <nav class="flex items-center gap-4 text-xs font-mono text-slate-400">
+      <nav class="flex items-center gap-3.5 text-xs font-mono text-slate-400">
         <a href="#experience" class="hover:text-emerald-400 transition">Work</a>
         <a href="#game" class="hover:text-emerald-400 transition">Arcade</a>
-        <a href="#art" class="hover:text-emerald-400 transition">Artworks</a>
-        <a href="https://github.com/Srinivasan1008" target="_blank" rel="noopener" class="text-white hover:text-emerald-400 transition ml-2">GitHub ↗</a>
+        <a href="#art" class="hover:text-emerald-400 transition">Art</a>
+        <a href="https://github.com/Srinivasan1008" target="_blank" rel="noopener" class="text-white hover:text-emerald-400 transition ml-1">GitHub ↗</a>
       </nav>
     </div>
   </header>
@@ -87,25 +106,22 @@
   <main class="max-w-5xl mx-auto px-4 py-8 space-y-16">
 
     <!-- HERO SECTION -->
-    <section id="hero" class="space-y-6 pt-4">
+    <section id="hero" class="space-y-6 pt-2">
       <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
         
         <!-- Profile Picture Box -->
-        <div class="relative group cursor-pointer" onclick="document.getElementById('avatar-input').click()" title="Tap to select picture directly from phone">
+        <div class="relative group cursor-pointer" onclick="document.getElementById('avatar-input').click()" title="Tap to pick picture directly from phone">
           <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-surface-card border border-surface-border overflow-hidden flex items-center justify-center shadow-lg transition-transform group-hover:scale-[1.02]">
             <img 
               id="profile-img" 
-              src="16251.jpg" 
+              src="./16251.jpg" 
               alt="Srinivasan Venkatesan" 
               class="w-full h-full object-cover object-top" 
-              onerror="handleAvatarError(this)" 
+              onerror="tryNextAvatar(this)" 
             />
-            <div id="monogram-fallback" class="hidden flex-col items-center justify-center font-mono font-bold text-2xl text-emerald-400">
-              SV
-              <span class="text-[9px] font-normal text-slate-500">Tap to upload</span>
-            </div>
+            <div id="monogram-fallback" class="hidden font-mono font-bold text-2xl text-slate-400">SV</div>
           </div>
-          <span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-[#08090d]"></span>
+          <span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-[#08090d]" title="Active"></span>
           <input type="file" id="avatar-input" accept="image/*" class="hidden" onchange="handleManualAvatarUpload(event)" />
         </div>
 
@@ -123,7 +139,7 @@
       </div>
 
       <!-- Quick Action Buttons -->
-      <div class="flex flex-wrap gap-2.5 pt-2 font-mono text-xs">
+      <div class="flex flex-wrap gap-2.5 pt-1 font-mono text-xs">
         <a href="https://github.com/Srinivasan1008" target="_blank" class="px-3 py-2 rounded-lg bg-surface-card border border-surface-border hover:border-emerald-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5">
           <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           github.com/Srinivasan1008
@@ -134,12 +150,15 @@
         <a href="https://www.linkedin.com/in/srinivasan-v-9a08157a?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="px-3 py-2 rounded-lg bg-surface-card border border-surface-border hover:border-blue-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5">
           <span>💼</span> LinkedIn
         </a>
+        <button onclick="sharePortfolio()" class="px-3 py-2 rounded-lg bg-surface-card border border-surface-border hover:border-emerald-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+          <span>🔗</span> Share Link
+        </button>
         <button onclick="copyEmail()" id="copy-email-btn" class="px-3 py-2 rounded-lg bg-surface-card border border-surface-border hover:border-emerald-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5">
           <span>✉️</span> Nivas65536@gmail.com
         </button>
       </div>
 
-      <!-- Metrics -->
+      <!-- Quick Metrics Strip -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
         <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border">
           <div class="text-[11px] font-mono text-slate-400">EXPERIENCE</div>
@@ -173,16 +192,18 @@
         </div>
       </div>
 
+      <!-- Game Stage -->
       <div class="relative w-full rounded-2xl bg-[#050608] border border-surface-border overflow-hidden select-none">
         <canvas id="gameCanvas" class="w-full h-56 sm:h-64 block cursor-pointer"></canvas>
 
+        <!-- Overlay Screen (Start / Game Over) -->
         <div id="gameOverlay" class="absolute inset-0 bg-[#08090d]/90 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center z-10">
           <span id="overlayPill" class="text-[11px] font-mono uppercase px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 mb-2">
             One-Tap Gravity Flip
           </span>
           <h3 id="overlayTitle" class="text-2xl font-bold text-white mb-1">Binary Orbit</h3>
           <p id="overlaySub" class="text-xs text-slate-400 max-w-xs mb-4">
-            Tap or press Spacebar to switch between rails. Dodge hazards and grab pulses.
+            Tap or Spacebar to switch rails. Dodge hazards and build your combo streak.
           </p>
           <div class="flex items-center gap-3">
             <button onclick="startGame()" class="px-5 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs tracking-wider transition">
@@ -195,11 +216,15 @@
         </div>
       </div>
 
+      <!-- HUD + Top 3 Podium -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
         <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border flex items-center justify-between font-mono">
           <div>
-            <div class="text-[10px] text-slate-400">CURRENT RUN</div>
-            <div id="currentScore" class="text-2xl font-bold text-white">00</div>
+            <div class="text-[10px] text-slate-400">SCORE / STREAK</div>
+            <div class="flex items-baseline gap-2">
+              <span id="currentScore" class="text-2xl font-bold text-white">00</span>
+              <span id="streakBadge" class="text-xs font-bold text-emerald-400 hidden">0x</span>
+            </div>
           </div>
           <div class="text-right">
             <div class="text-[10px] text-slate-400">PERSONAL BEST</div>
@@ -308,7 +333,7 @@
       </div>
     </section>
 
-    <!-- SECTION: DIGITAL ART STUDIO (STABLE EMBEDS) -->
+    <!-- SECTION: DIGITAL ART STUDIO (PURE ARTWORK CROP) -->
     <section id="art" class="space-y-6">
       <div class="flex items-end justify-between border-b border-surface-border pb-3">
         <div>
@@ -321,14 +346,14 @@
       </div>
 
       <p class="text-xs text-slate-400">
-        Illustrations and sketches from my digital gallery. Tap on any post to open it directly on Instagram.
+        Illustrations and sketchbook concepts. Cropped cleanly to isolate the artwork.
       </p>
 
-      <!-- 6 Natural Instagram Posts (No strict CSS clipping to prevent iframe termination) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+      <!-- 6 Cropped Art Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         
         <!-- Post 1 -->
-        <div class="w-full">
+        <div class="art-post-wrapper">
           <blockquote class="instagram-media" 
             data-instgrm-permalink="https://www.instagram.com/p/DbjHAcvTefp/" 
             data-instgrm-version="14">
@@ -337,7 +362,7 @@
         </div>
 
         <!-- Post 2 -->
-        <div class="w-full">
+        <div class="art-post-wrapper">
           <blockquote class="instagram-media" 
             data-instgrm-permalink="https://www.instagram.com/p/DNalgacz1RZ/" 
             data-instgrm-version="14">
@@ -346,7 +371,7 @@
         </div>
 
         <!-- Post 3 -->
-        <div class="w-full">
+        <div class="art-post-wrapper">
           <blockquote class="instagram-media" 
             data-instgrm-permalink="https://www.instagram.com/p/DGALgnhIdMB/" 
             data-instgrm-version="14">
@@ -355,7 +380,7 @@
         </div>
 
         <!-- Post 4 -->
-        <div class="w-full">
+        <div class="art-post-wrapper">
           <blockquote class="instagram-media" 
             data-instgrm-permalink="https://www.instagram.com/p/DAvv0esTr0O/" 
             data-instgrm-version="14">
@@ -364,7 +389,7 @@
         </div>
 
         <!-- Post 5 -->
-        <div class="w-full">
+        <div class="art-post-wrapper">
           <blockquote class="instagram-media" 
             data-instgrm-permalink="https://www.instagram.com/p/DCFenEpTmil/" 
             data-instgrm-version="14">
@@ -373,7 +398,7 @@
         </div>
 
         <!-- Post 6 -->
-        <div class="w-full">
+        <div class="art-post-wrapper">
           <blockquote class="instagram-media" 
             data-instgrm-permalink="https://www.instagram.com/p/DAXl2KQyxbw/" 
             data-instgrm-version="14">
@@ -385,7 +410,7 @@
 
       <!-- Follow Banner -->
       <div class="p-4 rounded-xl bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-transparent border border-pink-500/20 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-xs">
-        <span class="text-slate-300">Discover all sketchbook series, character design concepts, and digital art drops:</span>
+        <span class="text-slate-300">Discover full sketchbook archives, character studies, and concept drops:</span>
         <a href="https://www.instagram.com/couch_artato?obrf=MTl0a2FwcnhuZHJ5ag==" target="_blank" class="px-4 py-2 rounded-lg bg-pink-500/20 hover:bg-pink-500/30 text-pink-300 border border-pink-500/30 transition whitespace-nowrap">
           Follow @couch_artato ↗
         </a>
@@ -425,25 +450,24 @@
 
   <script>
     /* 1. BULLETPROOF AVATAR CASCADE */
-    let avatarAttempt = 0;
-    function handleAvatarError(img) {
-      avatarAttempt++;
+    let avatarAttempts = 0;
+    function tryNextAvatar(img) {
+      avatarAttempts++;
       const cached = localStorage.getItem('user_portfolio_avatar');
       if (cached && img.src !== cached) {
         img.src = cached;
         return;
       }
-      if (avatarAttempt === 1) {
-        img.src = './16251.jpg';[span_9](start_span)[span_9](end_span)
+      if (avatarAttempts === 1) {
+        img.src = '16251.jpg';
         return;
       }
-      if (avatarAttempt === 2) {
-        img.src = 'https://raw.githubusercontent.com/Srinivasan1008/Interactive_Portfolio/main/16251.jpg';[span_10](start_span)[span_10](end_span)
+      if (avatarAttempts === 2) {
+        img.src = 'https://raw.githubusercontent.com/Srinivasan1008/Interactive_Portfolio/main/16251.jpg';
         return;
       }
       img.classList.add('hidden');
       document.getElementById('monogram-fallback').classList.remove('hidden');
-      document.getElementById('monogram-fallback').classList.add('flex');
     }
 
     function handleManualAvatarUpload(event) {
@@ -456,7 +480,6 @@
           img.src = base64Data;
           img.classList.remove('hidden');
           document.getElementById('monogram-fallback').classList.add('hidden');
-          document.getElementById('monogram-fallback').classList.remove('flex');
           localStorage.setItem('user_portfolio_avatar', base64Data);
         };
         reader.readAsDataURL(file);
@@ -474,6 +497,18 @@
       renderLeaderboard();
       initCanvas();
     });
+
+    function sharePortfolio() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Srinivasan Venkatesan | Portfolio',
+          text: 'Check out the interactive developer & art portfolio of Srinivasan Venkatesan.',
+          url: window.location.href
+        }).catch(() => {});
+      } else {
+        copyEmail();
+      }
+    }
 
     function copyEmail() {
       navigator.clipboard.writeText('Nivas65536@gmail.com');
@@ -523,12 +558,13 @@
       document.getElementById('bestScore').innerText = String(best).padStart(2, '0');
     }
 
-    /* 3. BINARY ORBIT ARCADE GAME */
+    /* 3. ENHANCED BINARY ORBIT ARCADE GAME */
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
     
     let isPlaying = false;
     let score = 0;
+    let streak = 0;
     let soundEnabled = true;
     let animId = null;
 
@@ -539,7 +575,7 @@
       rail: 'bottom',
       targetY: 0,
       currentY: 0,
-      speed: 0.28
+      speed: 0.30
     };
 
     let obstacles = [];
@@ -589,9 +625,16 @@
       document.getElementById('muteBtn').innerText = soundEnabled ? '🔊 Sound On' : '🔇 Muted';
     }
 
+    function triggerHaptic(duration = 15) {
+      if ('vibrate' in navigator) {
+        try { navigator.vibrate(duration); } catch(e) {}
+      }
+    }
+
     function switchRail() {
       if (!isPlaying) return;
       const h = canvas.height / window.devicePixelRatio;
+      triggerHaptic(15);
       if (player.rail === 'bottom') {
         player.rail = 'top';
         player.targetY = railMargin;
@@ -631,15 +674,27 @@
       }
     }
 
+    function updateStreakDisplay() {
+      const badge = document.getElementById('streakBadge');
+      if (streak >= 3) {
+        badge.innerText = `${streak}x STREAK`;
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+    }
+
     function startGame() {
       document.getElementById('gameOverlay').classList.add('hidden');
       document.getElementById('recordModal').classList.add('hidden');
       score = 0;
+      streak = 0;
       speed = 4.2;
       obstacles = [];
       particles = [];
       spawnTimer = 0;
       document.getElementById('currentScore').innerText = '00';
+      updateStreakDisplay();
       
       const h = canvas.height / window.devicePixelRatio;
       player.rail = 'bottom';
@@ -654,8 +709,9 @@
     function gameOver() {
       isPlaying = false;
       cancelAnimationFrame(animId);
+      triggerHaptic([40, 60, 40]);
       playBeep(140, 'sawtooth', 0.25);
-      createBurst(player.x, player.currentY, '#ef4444', 18);
+      createBurst(player.x, player.currentY, '#ef4444', 20);
 
       const board = getLeaderboard();
       const qualifies = board.length < 3 || score > board[board.length - 1].score;
@@ -702,7 +758,7 @@
       player.currentY += (player.targetY - player.currentY) * player.speed;
 
       spawnTimer++;
-      if (spawnTimer > Math.max(38, 75 - Math.floor(score / 3))) {
+      if (spawnTimer > Math.max(36, 70 - Math.floor(score / 3))) {
         spawnTimer = 0;
         const rail = Math.random() > 0.5 ? 'top' : 'bottom';
         const isBonus = Math.random() > 0.75;
@@ -726,11 +782,15 @@
 
         if (dist < player.radius + obs.radius + 2) {
           if (obs.isBonus) {
-            score += 3;
+            streak++;
+            const bonusPts = streak >= 5 ? 6 : 3;
+            score += bonusPts;
+            triggerHaptic(25);
             playBeep(780, 'sine', 0.08);
-            createBurst(obs.x, obs.y, '#38bdf8', 8);
+            createBurst(obs.x, obs.y, '#38bdf8', 12);
             obstacles.splice(i, 1);
             document.getElementById('currentScore').innerText = String(score).padStart(2, '0');
+            updateStreakDisplay();
             continue;
           } else {
             gameOver();
@@ -741,9 +801,11 @@
         if (!obs.passed && obs.x < player.x) {
           obs.passed = true;
           if (!obs.isBonus) {
-            score += 1;
+            streak++;
+            score += (streak >= 5 ? 2 : 1);
             document.getElementById('currentScore').innerText = String(score).padStart(2, '0');
             speed += 0.04;
+            updateStreakDisplay();
           }
         }
 
@@ -765,6 +827,7 @@
 
       ctx.clearRect(0, 0, w, h);
 
+      // Rails
       ctx.strokeStyle = '#1e2333';
       ctx.lineWidth = 2;
       ctx.beginPath();
@@ -774,11 +837,13 @@
       ctx.lineTo(w, h - railMargin);
       ctx.stroke();
 
+      // Particle Trail
       ctx.fillStyle = 'rgba(16, 185, 129, 0.2)';
       ctx.beginPath();
       ctx.arc(player.x - 8, player.currentY, player.radius * 0.7, 0, Math.PI * 2);
       ctx.fill();
 
+      // Particles
       particles.forEach(p => {
         ctx.fillStyle = p.color;
         ctx.globalAlpha = p.life;
@@ -788,11 +853,21 @@
         ctx.globalAlpha = 1;
       });
 
+      // Player with subtle streak aura
+      if (streak >= 5) {
+        ctx.strokeStyle = '#34d399';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(player.x, player.currentY, player.radius + 3, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+
       ctx.fillStyle = '#10b981';
       ctx.beginPath();
       ctx.arc(player.x, player.currentY, player.radius, 0, Math.PI * 2);
       ctx.fill();
 
+      // Obstacles
       obstacles.forEach(obs => {
         if (obs.isBonus) {
           ctx.fillStyle = '#38bdf8';
