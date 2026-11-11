@@ -45,7 +45,6 @@
       background-color: #08090d;
       color: #e2e8f0;
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-      -webkit-font-smoothing: antialiased;
     }
     ::selection {
       background: #10b981;
@@ -58,14 +57,14 @@
         linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
     }
     
-    /* Dedicated Canvas Touch Isolation */
+    /* Touch handling for pure mobile responsive gaming */
     #gameCanvas {
       touch-action: none;
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* PURE ARTWORK ISOLATION CONTAINER: Crops header & footer cleanly */
-    .pure-art-frame {
+    /* PURE ARTWORK ISOLATION: Clips top profile bar & bottom CTA buttons */
+    .art-post-wrapper {
       position: relative;
       width: 100%;
       height: 380px;
@@ -75,27 +74,20 @@
       border: 1px solid #1f2330;
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
     }
-    .pure-art-frame iframe,
-    .pure-art-frame .instagram-media {
+    .art-post-wrapper iframe,
+    .art-post-wrapper .instagram-media {
       position: absolute !important;
-      top: -54px !important; /* Crops off "couch_artato View profile" header */
+      top: -54px !important; /* Conceals profile header completely */
       left: 0 !important;
       width: 100% !important;
       min-width: 100% !important;
       border: none !important;
     }
-    /* Scroll-safe tap overlay */
-    .art-click-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 20;
-      cursor: pointer;
-    }
   </style>
 </head>
 <body class="min-h-screen grid-bg font-sans antialiased selection:bg-emerald-500 selection:text-black">
 
-  <!-- Minimal Header -->
+  <!-- Header -->
   <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-[#08090d]/85 border-b border-surface-border">
     <div class="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
       <a href="#hero" class="flex items-center gap-2 group">
@@ -105,7 +97,7 @@
       <nav class="flex items-center gap-3.5 text-xs font-mono text-slate-400">
         <a href="#experience" class="hover:text-emerald-400 transition">Work</a>
         <a href="#game" class="hover:text-emerald-400 transition">Arcade</a>
-        <a href="#art" class="hover:text-emerald-400 transition">Artworks</a>
+        <a href="#art" class="hover:text-emerald-400 transition">Art</a>
         <a href="https://github.com/Srinivasan1008" target="_blank" rel="noopener" class="text-white hover:text-emerald-400 transition ml-1">GitHub ↗</a>
       </nav>
     </div>
@@ -117,15 +109,15 @@
     <section id="hero" class="space-y-6 pt-2">
       <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
         
-        <!-- Profile Picture Box (Inlined Data URI: Zero Network Dependency) -->
-        <div class="relative group cursor-pointer" onclick="document.getElementById('avatar-input').click()" title="Tap to select picture directly from phone">
+        <!-- Profile Picture Box (Flow B: Edge CDN + Dynamic Fallbacks) -->
+        <div class="relative group cursor-pointer" onclick="document.getElementById('avatar-input').click()" title="Tap to select photo directly from phone">
           <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-surface-card border border-surface-border overflow-hidden flex items-center justify-center shadow-lg transition-transform group-hover:scale-[1.02]">
             <img 
               id="profile-img" 
-              src="https://cdn.jsdelivr.net/gh/Srinivasan1008/Interactive_Portfolio@main/16251.jpg"
+              src="https://cdn.jsdelivr.net/gh/Srinivasan1008/Interactive_Portfolio@main/16251.jpg" 
               alt="Srinivasan Venkatesan" 
               class="w-full h-full object-cover object-top" 
-              onerror="handleAvatarError(this)" 
+              onerror="tryAvatarFallbacks(this)" 
             />
             <div id="monogram-fallback" class="hidden font-mono font-bold text-2xl text-slate-400">SV</div>
           </div>
@@ -187,7 +179,7 @@
       </div>
     </section>
 
-    <!-- SECTION: ARCADE GAME & LEADERBOARD (CLEAN ORIGINAL + 15MS HAPTIC) -->
+    <!-- SECTION: ARCADE GAME & LEADERBOARD (CLEAN ORIGINAL LAYOUT + HAPTICS) -->
     <section id="game" class="space-y-4">
       <div class="flex items-end justify-between border-b border-surface-border pb-3">
         <div>
@@ -224,7 +216,7 @@
         </div>
       </div>
 
-      <!-- Clean Score Bar & Top 3 Podium -->
+      <!-- Clean HUD & Podium -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
         <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border flex items-center justify-between font-mono">
           <div>
@@ -257,7 +249,6 @@
       </div>
 
       <div class="space-y-3">
-        <!-- Role 1 -->
         <div class="p-4 rounded-xl bg-surface-card border border-surface-border hover:border-surface-subtle transition">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
             <div class="flex items-center gap-2">
@@ -267,7 +258,7 @@
             <span class="font-mono text-xs text-slate-400">09/2025 – Present</span>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed mb-2.5">
-            Leading UI/UX architecture for the APEX enterprise platform, driving 85% corporate tool adoption[span_8](start_span)[span_8](end_span). Built the automated Regression Execution Agent (React TS) and authored GENTAAS decoupled migration systems[span_9](start_span)[span_9](end_span).
+            Leading UI/UX architecture for the APEX enterprise platform, driving 85% corporate tool adoption[span_13](start_span)[span_13](end_span). Built the automated Regression Execution Agent (React TS) and authored GENTAAS decoupled migration systems[span_14](start_span)[span_14](end_span).
           </p>
           <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-slate-400">
             <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">React TS</span>
@@ -277,7 +268,6 @@
           </div>
         </div>
 
-        <!-- Role 2 -->
         <div class="p-4 rounded-xl bg-surface-card border border-surface-border hover:border-surface-subtle transition">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
             <div class="flex items-center gap-2">
@@ -287,7 +277,7 @@
             <span class="font-mono text-xs text-slate-400">07/2022 – 09/2025</span>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed mb-2.5">
-            Engineered the Test Script Generator UI & iAssist integration, scaling test case adoption to 85% and defect creation to 39%[span_10](start_span)[span_10](end_span). Delivered the Order Journey Dashboard (OJD) with hierarchical node-tree visualizations[span_11](start_span)[span_11](end_span).
+            Engineered the Test Script Generator UI & iAssist integration, scaling test case adoption to 85% and defect creation to 39%[span_15](start_span)[span_15](end_span). Delivered the Order Journey Dashboard (OJD) with hierarchical node-tree visualizations[span_16](start_span)[span_16](end_span).
           </p>
           <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-slate-400">
             <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">Hierarchical Visualizations</span>
@@ -296,7 +286,6 @@
           </div>
         </div>
 
-        <!-- Role 3 -->
         <div class="p-4 rounded-xl bg-surface-card border border-surface-border hover:border-surface-subtle transition">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
             <div class="flex items-center gap-2">
@@ -306,36 +295,36 @@
             <span class="font-mono text-xs text-slate-400">08/2020 – 07/2022</span>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed">
-            Built the initial TAAS/GENTAAS dashboard from scratch with React and Node.js APIs backed by MySQL[span_12](start_span)[span_12](end_span). Automated operational metric tracking in the Magic platform[span_13](start_span)[span_13](end_span).
+            Built the initial TAAS/GENTAAS dashboard from scratch with React and Node.js APIs backed by MySQL[span_17](start_span)[span_17](end_span). Automated operational metric tracking in the Magic platform[span_18](start_span)[span_18](end_span).
           </p>
         </div>
       </div>
     </section>
 
-    <!-- SECTION: AWARDS & EDUCATION -->
+    <!-- SECTION: AWARDS & HONORS -->
     <section class="space-y-4">
       <div class="border-b border-surface-border pb-3">
-        <span class="text-xs font-mono text-emerald-400"># RECOGNITION & BACKGROUND</span>
-        <h2 class="text-xl font-bold text-white mt-0.5">Honors & Education</h2>
+        <span class="text-xs font-mono text-emerald-400"># RECOGNITION</span>
+        <h2 class="text-xl font-bold text-white mt-0.5">Awards & Corporate Honors</h2>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
           <div class="font-mono text-emerald-400 text-lg font-bold">7× Spotlight Awards</div>
           <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-            Honored for sustained excellence in UI architectural development across GENTAAS, OJD, and TAAS platforms[span_14](start_span)[span_14](end_span).
+            Honored for sustained excellence in UI architectural development across GENTAAS, OJD, and TAAS[span_19](start_span)[span_19](end_span).
           </p>
         </div>
         <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
           <div class="font-mono text-white text-lg font-bold">4× Simple Thanks</div>
           <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-            Awarded for extra effort in building successful PDF compare tools and self-healing automation[span_15](start_span)[span_15](end_span).
+            Awarded for driving self-healing automation and delivering the high-precision enterprise PDF compare utility[span_20](start_span)[span_20](end_span).
           </p>
         </div>
         <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
-          <div class="font-mono text-pink-400 text-lg font-bold">SASTRA University</div>
+          <div class="font-mono text-pink-400 text-lg font-bold">Creative Honors</div>
           <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-            Bachelor of Information Technology (2020)[span_16](start_span)[span_16](end_span). Digital art featured in VCG Times and VCG Canvas[span_17](start_span)[span_17](end_span).
+            Selected digital artworks featured and celebrated in VCG Times and VCG Canvas creative showcases[span_21](start_span)[span_21](end_span).
           </p>
         </div>
       </div>
@@ -354,63 +343,63 @@
       </div>
 
       <p class="text-xs text-slate-400">
-        Illustrations and sketchbook concepts. Cropped cleanly to isolate the artwork. Tap any piece to view the full resolution post on Instagram.
+        Illustrations and sketchbook concepts. Cropped cleanly to isolate the artwork.
       </p>
 
-      <!-- 6 Cropped Art Cards with Scroll-Safe Tap Layer -->
+      <!-- 6 Cropped Art Cards -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         
-        <!-- Post 1: DbjHAcvTefp -->
-        <div class="pure-art-frame group">
-          <a href="https://www.instagram.com/p/DbjHAcvTefp/?vrfl=MWpzM3B3dnE3c2V2Mw==" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
+        <!-- Post 1 -->
+        <div class="art-post-wrapper">
           <blockquote class="instagram-media" 
             data-instgrm-permalink="https://www.instagram.com/p/DbjHAcvTefp/" 
             data-instgrm-version="14">
+            <a href="https://www.instagram.com/p/DbjHAcvTefp/" target="_blank"></a>
           </blockquote>
         </div>
 
-        <!-- Post 2: DNalgacz1RZ -->
-        <div class="pure-art-frame group">
-          <a href="https://www.instagram.com/p/DNalgacz1RZ/?dlrf=MWpqam1pdTIwcGE2eQ==" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
+        <!-- Post 2 -->
+        <div class="art-post-wrapper">
           <blockquote class="instagram-media" 
             data-instgrm-permalink="https://www.instagram.com/p/DNalgacz1RZ/" 
             data-instgrm-version="14">
+            <a href="https://www.instagram.com/p/DNalgacz1RZ/" target="_blank"></a>
           </blockquote>
         </div>
 
-        <!-- Post 3: DGALgnhIdMB -->
-        <div class="pure-art-frame group">
-          <a href="https://www.instagram.com/p/DGALgnhIdMB/?vrfl=MW5waW5odTNja3U1Mg==" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
+        <!-- Post 3 -->
+        <div class="art-post-wrapper">
           <blockquote class="instagram-media" 
             data-instgrm-permalink="https://www.instagram.com/p/DGALgnhIdMB/" 
             data-instgrm-version="14">
+            <a href="https://www.instagram.com/p/DGALgnhIdMB/" target="_blank"></a>
           </blockquote>
         </div>
 
-        <!-- Post 4: DAvv0esTr0O -->
-        <div class="pure-art-frame group">
-          <a href="https://www.instagram.com/p/DAvv0esTr0O/?xtok=eTg1aTNlYWhqc25y" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
+        <!-- Post 4 -->
+        <div class="art-post-wrapper">
           <blockquote class="instagram-media" 
             data-instgrm-permalink="https://www.instagram.com/p/DAvv0esTr0O/" 
             data-instgrm-version="14">
+            <a href="https://www.instagram.com/p/DAvv0esTr0O/" target="_blank"></a>
           </blockquote>
         </div>
 
-        <!-- Post 5: DCFenEpTmil -->
-        <div class="pure-art-frame group">
-          <a href="https://www.instagram.com/p/DCFenEpTmil/?obrf=MXR2NjFhMzh2ODNnaA==" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
+        <!-- Post 5 -->
+        <div class="art-post-wrapper">
           <blockquote class="instagram-media" 
             data-instgrm-permalink="https://www.instagram.com/p/DCFenEpTmil/" 
             data-instgrm-version="14">
+            <a href="https://www.instagram.com/p/DCFenEpTmil/" target="_blank"></a>
           </blockquote>
         </div>
 
-        <!-- Post 6: DAXl2KQyxbw -->
-        <div class="pure-art-frame group">
-          <a href="https://www.instagram.com/p/DAXl2KQyxbw/?xtok=OXZ6eHl5M25xb3Fu" target="_blank" class="art-click-overlay" title="Open on Instagram"></a>
+        <!-- Post 6 -->
+        <div class="art-post-wrapper">
           <blockquote class="instagram-media" 
             data-instgrm-permalink="https://www.instagram.com/p/DAXl2KQyxbw/" 
             data-instgrm-version="14">
+            <a href="https://www.instagram.com/p/DAXl2KQyxbw/" target="_blank"></a>
           </blockquote>
         </div>
 
@@ -418,7 +407,7 @@
 
       <!-- Follow Banner -->
       <div class="p-4 rounded-xl bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-transparent border border-pink-500/20 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-xs">
-        <span class="text-slate-300">Discover all sketchbook series, character design concepts, and digital art drops:</span>
+        <span class="text-slate-300">Discover full sketchbook archives, character studies, and concept drops:</span>
         <a href="https://www.instagram.com/couch_artato?obrf=MTl0a2FwcnhuZHJ5ag==" target="_blank" class="px-4 py-2 rounded-lg bg-pink-500/20 hover:bg-pink-500/30 text-pink-300 border border-pink-500/30 transition whitespace-nowrap">
           Follow @couch_artato ↗
         </a>
@@ -457,21 +446,23 @@
   <script async src="//www.instagram.com/embed.js"></script>
 
   <script>
-    /* 1. FAILSAFE AVATAR RESOLVER */
-    function handleAvatarError(img) {
+    /* 1. BULLETPROOF AVATAR ENGINE (Flow B: jsDelivr Edge + Storage Fallback) */
+    let avatarAttempt = 0;
+    function tryAvatarFallbacks(img) {
+      avatarAttempt++;
       const cached = localStorage.getItem('user_portfolio_avatar');
       if (cached && img.src !== cached) {
         img.src = cached;
         return;
       }
-      if (!img.getAttribute('data-tried-rel')) {
-        img.setAttribute('data-tried-rel', 'true');
-        img.src = './16251.jpg';
+      if (avatarAttempt === 1) {
+        // Fallback 1: Raw GitHub branch
+        img.src = 'https://raw.githubusercontent.com/Srinivasan1008/Interactive_Portfolio/main/16251.jpg';
         return;
       }
-      if (!img.getAttribute('data-tried-raw')) {
-        img.setAttribute('data-tried-raw', 'true');
-        img.src = 'https://raw.githubusercontent.com/Srinivasan1008/Interactive_Portfolio/main/16251.jpg';
+      if (avatarAttempt === 2) {
+        // Fallback 2: Repo relative path
+        img.src = './16251.jpg';
         return;
       }
       img.classList.add('hidden');
@@ -510,7 +501,7 @@
       if (navigator.share) {
         navigator.share({
           title: 'Srinivasan Venkatesan | Portfolio',
-          text: 'Check out the interactive developer & digital art portfolio of Srinivasan Venkatesan.',
+          text: 'Check out the interactive developer & art portfolio of Srinivasan Venkatesan.',
           url: window.location.href
         }).catch(() => {});
       } else {
@@ -566,7 +557,7 @@
       document.getElementById('bestScore').innerText = String(best).padStart(2, '0');
     }
 
-    /* 3. CLEAN ORIGINAL ARCADE WITH 15MS HAPTIC FEEDBACK */
+    /* 3. ORIGINAL MINIMALIST BINARY ORBIT (WITH 15MS HAPTIC TAP) */
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
     
@@ -704,7 +695,7 @@
     function gameOver() {
       isPlaying = false;
       cancelAnimationFrame(animId);
-      triggerHaptic([30, 40, 30]);
+      triggerHaptic([40, 60, 40]);
       playBeep(140, 'sawtooth', 0.25);
       createBurst(player.x, player.currentY, '#ef4444', 18);
 
