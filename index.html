@@ -57,13 +57,13 @@
         linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
     }
     
-    /* Dedicated Canvas Touch Isolation */
+    /* Touch handling for pure mobile responsive gaming */
     #gameCanvas {
       touch-action: none;
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* PURE ARTWORK ISOLATION: Crops off top header and bottom footer cleanly */
+    /* PURE ARTWORK ISOLATION: Clips top profile bar & bottom CTA buttons */
     .art-post-wrapper {
       position: relative;
       width: 100%;
@@ -76,9 +76,9 @@
     }
     .art-post-wrapper iframe,
     .art-post-wrapper .instagram-media {
-      position: relative !important;
-      top: -54px !important;
-      margin: 0 auto !important;
+      position: absolute !important;
+      top: -54px !important; /* Conceals profile header completely */
+      left: 0 !important;
       width: 100% !important;
       min-width: 100% !important;
       border: none !important;
@@ -109,15 +109,15 @@
     <section id="hero" class="space-y-6 pt-2">
       <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
         
-        <!-- Profile Picture Box -->
-        <div class="relative group cursor-pointer" onclick="document.getElementById('avatar-input').click()" title="Tap to pick picture directly from phone">
+        <!-- Profile Picture Box (Flow B: Edge CDN + Dynamic Fallbacks) -->
+        <div class="relative group cursor-pointer" onclick="document.getElementById('avatar-input').click()" title="Tap to select photo directly from phone">
           <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-surface-card border border-surface-border overflow-hidden flex items-center justify-center shadow-lg transition-transform group-hover:scale-[1.02]">
             <img 
               id="profile-img" 
-              src="./16251.jpg" 
+              src="https://cdn.jsdelivr.net/gh/Srinivasan1008/Interactive_Portfolio@main/16251.jpg" 
               alt="Srinivasan Venkatesan" 
               class="w-full h-full object-cover object-top" 
-              onerror="tryNextAvatar(this)" 
+              onerror="tryAvatarFallbacks(this)" 
             />
             <div id="monogram-fallback" class="hidden font-mono font-bold text-2xl text-slate-400">SV</div>
           </div>
@@ -179,7 +179,7 @@
       </div>
     </section>
 
-    <!-- SECTION: ARCADE GAME & LEADERBOARD -->
+    <!-- SECTION: ARCADE GAME & LEADERBOARD (CLEAN ORIGINAL LAYOUT + HAPTICS) -->
     <section id="game" class="space-y-4">
       <div class="flex items-end justify-between border-b border-surface-border pb-3">
         <div>
@@ -203,7 +203,7 @@
           </span>
           <h3 id="overlayTitle" class="text-2xl font-bold text-white mb-1">Binary Orbit</h3>
           <p id="overlaySub" class="text-xs text-slate-400 max-w-xs mb-4">
-            Tap or Spacebar to switch rails. Dodge hazards and build your combo streak.
+            Tap or Spacebar to switch rails. Dodge hazards and grab pulses.
           </p>
           <div class="flex items-center gap-3">
             <button onclick="startGame()" class="px-5 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs tracking-wider transition">
@@ -216,15 +216,12 @@
         </div>
       </div>
 
-      <!-- HUD + Top 3 Podium -->
+      <!-- Clean HUD & Podium -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
         <div class="p-3.5 rounded-xl bg-surface-card border border-surface-border flex items-center justify-between font-mono">
           <div>
-            <div class="text-[10px] text-slate-400">SCORE / STREAK</div>
-            <div class="flex items-baseline gap-2">
-              <span id="currentScore" class="text-2xl font-bold text-white">00</span>
-              <span id="streakBadge" class="text-xs font-bold text-emerald-400 hidden">0x</span>
-            </div>
+            <div class="text-[10px] text-slate-400">CURRENT RUN</div>
+            <div id="currentScore" class="text-2xl font-bold text-white">00</div>
           </div>
           <div class="text-right">
             <div class="text-[10px] text-slate-400">PERSONAL BEST</div>
@@ -261,7 +258,7 @@
             <span class="font-mono text-xs text-slate-400">09/2025 – Present</span>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed mb-2.5">
-            Leading UI/UX architecture for the APEX enterprise platform, driving 85% corporate tool adoption[span_0](start_span)[span_0](end_span). Built the automated Regression Execution Agent (React TS) and authored GENTAAS decoupled migration systems[span_1](start_span)[span_1](end_span).
+            Leading UI/UX architecture for the APEX enterprise platform, driving 85% corporate tool adoption[span_13](start_span)[span_13](end_span). Built the automated Regression Execution Agent (React TS) and authored GENTAAS decoupled migration systems[span_14](start_span)[span_14](end_span).
           </p>
           <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-slate-400">
             <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">React TS</span>
@@ -280,7 +277,7 @@
             <span class="font-mono text-xs text-slate-400">07/2022 – 09/2025</span>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed mb-2.5">
-            Engineered the Test Script Generator UI & iAssist integration, scaling test case adoption to 85% and defect creation to 39%[span_2](start_span)[span_2](end_span). Delivered the Order Journey Dashboard (OJD) with hierarchical node-tree visualizations[span_3](start_span)[span_3](end_span).
+            Engineered the Test Script Generator UI & iAssist integration, scaling test case adoption to 85% and defect creation to 39%[span_15](start_span)[span_15](end_span). Delivered the Order Journey Dashboard (OJD) with hierarchical node-tree visualizations[span_16](start_span)[span_16](end_span).
           </p>
           <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-slate-400">
             <span class="px-2 py-0.5 rounded bg-[#0b0c10] border border-surface-border">Hierarchical Visualizations</span>
@@ -298,7 +295,7 @@
             <span class="font-mono text-xs text-slate-400">08/2020 – 07/2022</span>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed">
-            Built the initial TAAS/GENTAAS dashboard from scratch with React and Node.js APIs backed by MySQL[span_4](start_span)[span_4](end_span). Automated operational metric tracking in the Magic platform[span_5](start_span)[span_5](end_span).
+            Built the initial TAAS/GENTAAS dashboard from scratch with React and Node.js APIs backed by MySQL[span_17](start_span)[span_17](end_span). Automated operational metric tracking in the Magic platform[span_18](start_span)[span_18](end_span).
           </p>
         </div>
       </div>
@@ -315,25 +312,25 @@
         <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
           <div class="font-mono text-emerald-400 text-lg font-bold">7× Spotlight Awards</div>
           <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-            Honored for sustained excellence in UI architectural development across GENTAAS, OJD, and TAAS[span_6](start_span)[span_6](end_span).
+            Honored for sustained excellence in UI architectural development across GENTAAS, OJD, and TAAS[span_19](start_span)[span_19](end_span).
           </p>
         </div>
         <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
           <div class="font-mono text-white text-lg font-bold">4× Simple Thanks</div>
           <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-            Awarded for driving self-healing automation and delivering the high-precision enterprise PDF compare utility[span_7](start_span)[span_7](end_span).
+            Awarded for driving self-healing automation and delivering the high-precision enterprise PDF compare utility[span_20](start_span)[span_20](end_span).
           </p>
         </div>
         <div class="p-4 rounded-xl bg-surface-card border border-surface-border">
           <div class="font-mono text-pink-400 text-lg font-bold">Creative Honors</div>
           <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-            Selected digital artworks featured and celebrated in VCG Times and VCG Canvas creative showcases[span_8](start_span)[span_8](end_span).
+            Selected digital artworks featured and celebrated in VCG Times and VCG Canvas creative showcases[span_21](start_span)[span_21](end_span).
           </p>
         </div>
       </div>
     </section>
 
-    <!-- SECTION: DIGITAL ART STUDIO (PURE ARTWORK CROP) -->
+    <!-- SECTION: DIGITAL ART STUDIO (PURE ARTWORK CROP - NO HEADER / NO FOOTER) -->
     <section id="art" class="space-y-6">
       <div class="flex items-end justify-between border-b border-surface-border pb-3">
         <div>
@@ -449,21 +446,23 @@
   <script async src="//www.instagram.com/embed.js"></script>
 
   <script>
-    /* 1. BULLETPROOF AVATAR CASCADE */
-    let avatarAttempts = 0;
-    function tryNextAvatar(img) {
-      avatarAttempts++;
+    /* 1. BULLETPROOF AVATAR ENGINE (Flow B: jsDelivr Edge + Storage Fallback) */
+    let avatarAttempt = 0;
+    function tryAvatarFallbacks(img) {
+      avatarAttempt++;
       const cached = localStorage.getItem('user_portfolio_avatar');
       if (cached && img.src !== cached) {
         img.src = cached;
         return;
       }
-      if (avatarAttempts === 1) {
-        img.src = '16251.jpg';
+      if (avatarAttempt === 1) {
+        // Fallback 1: Raw GitHub branch
+        img.src = 'https://raw.githubusercontent.com/Srinivasan1008/Interactive_Portfolio/main/16251.jpg';
         return;
       }
-      if (avatarAttempts === 2) {
-        img.src = 'https://raw.githubusercontent.com/Srinivasan1008/Interactive_Portfolio/main/16251.jpg';
+      if (avatarAttempt === 2) {
+        // Fallback 2: Repo relative path
+        img.src = './16251.jpg';
         return;
       }
       img.classList.add('hidden');
@@ -558,13 +557,12 @@
       document.getElementById('bestScore').innerText = String(best).padStart(2, '0');
     }
 
-    /* 3. ENHANCED BINARY ORBIT ARCADE GAME */
+    /* 3. ORIGINAL MINIMALIST BINARY ORBIT (WITH 15MS HAPTIC TAP) */
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
     
     let isPlaying = false;
     let score = 0;
-    let streak = 0;
     let soundEnabled = true;
     let animId = null;
 
@@ -575,7 +573,7 @@
       rail: 'bottom',
       targetY: 0,
       currentY: 0,
-      speed: 0.30
+      speed: 0.28
     };
 
     let obstacles = [];
@@ -674,27 +672,15 @@
       }
     }
 
-    function updateStreakDisplay() {
-      const badge = document.getElementById('streakBadge');
-      if (streak >= 3) {
-        badge.innerText = `${streak}x STREAK`;
-        badge.classList.remove('hidden');
-      } else {
-        badge.classList.add('hidden');
-      }
-    }
-
     function startGame() {
       document.getElementById('gameOverlay').classList.add('hidden');
       document.getElementById('recordModal').classList.add('hidden');
       score = 0;
-      streak = 0;
       speed = 4.2;
       obstacles = [];
       particles = [];
       spawnTimer = 0;
       document.getElementById('currentScore').innerText = '00';
-      updateStreakDisplay();
       
       const h = canvas.height / window.devicePixelRatio;
       player.rail = 'bottom';
@@ -711,7 +697,7 @@
       cancelAnimationFrame(animId);
       triggerHaptic([40, 60, 40]);
       playBeep(140, 'sawtooth', 0.25);
-      createBurst(player.x, player.currentY, '#ef4444', 20);
+      createBurst(player.x, player.currentY, '#ef4444', 18);
 
       const board = getLeaderboard();
       const qualifies = board.length < 3 || score > board[board.length - 1].score;
@@ -758,7 +744,7 @@
       player.currentY += (player.targetY - player.currentY) * player.speed;
 
       spawnTimer++;
-      if (spawnTimer > Math.max(36, 70 - Math.floor(score / 3))) {
+      if (spawnTimer > Math.max(38, 75 - Math.floor(score / 3))) {
         spawnTimer = 0;
         const rail = Math.random() > 0.5 ? 'top' : 'bottom';
         const isBonus = Math.random() > 0.75;
@@ -782,15 +768,12 @@
 
         if (dist < player.radius + obs.radius + 2) {
           if (obs.isBonus) {
-            streak++;
-            const bonusPts = streak >= 5 ? 6 : 3;
-            score += bonusPts;
-            triggerHaptic(25);
+            score += 3;
+            triggerHaptic(20);
             playBeep(780, 'sine', 0.08);
-            createBurst(obs.x, obs.y, '#38bdf8', 12);
+            createBurst(obs.x, obs.y, '#38bdf8', 8);
             obstacles.splice(i, 1);
             document.getElementById('currentScore').innerText = String(score).padStart(2, '0');
-            updateStreakDisplay();
             continue;
           } else {
             gameOver();
@@ -801,11 +784,9 @@
         if (!obs.passed && obs.x < player.x) {
           obs.passed = true;
           if (!obs.isBonus) {
-            streak++;
-            score += (streak >= 5 ? 2 : 1);
+            score += 1;
             document.getElementById('currentScore').innerText = String(score).padStart(2, '0');
             speed += 0.04;
-            updateStreakDisplay();
           }
         }
 
@@ -853,15 +834,7 @@
         ctx.globalAlpha = 1;
       });
 
-      // Player with subtle streak aura
-      if (streak >= 5) {
-        ctx.strokeStyle = '#34d399';
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.arc(player.x, player.currentY, player.radius + 3, 0, Math.PI * 2);
-        ctx.stroke();
-      }
-
+      // Player
       ctx.fillStyle = '#10b981';
       ctx.beginPath();
       ctx.arc(player.x, player.currentY, player.radius, 0, Math.PI * 2);
